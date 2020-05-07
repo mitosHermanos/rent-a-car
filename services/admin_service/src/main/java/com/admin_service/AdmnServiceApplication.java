@@ -20,4 +20,5 @@ public class AdmnServiceApplication {
 		SpringApplication.run(AdmnServiceApplication.class, args);
 	}
 
+
 }
