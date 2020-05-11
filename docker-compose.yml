@@ -1,0 +1,98 @@
+version: '3'
+services:
+
+  consul-server:
+    image: consul-server
+    build:
+      context: ./consul-server
+      dockerfile: Dockerfile
+    tty: true
+    ports: 
+      - "8500:8500"
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.2
+
+  admin-service:
+    image: admin_service
+    build:
+      context: ./services/admin_service
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+
+  ad-service:
+    image: ad_service
+    build:
+      context: ./services/ad_service
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+
+  renting-service:
+    image: renting_service
+    build:
+      context: ./services/renting_service
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+
+  authentication-service:
+    image: authentication_service
+    build:
+      context: ./services/authentication_service
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
+
+  gps-service:
+     image: gps_service
+     build:
+       context: ./services/gps_service
+       dockerfile: Dockerfile
+     tty: true
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
+  security-service:
+     image: security_service
+     build:
+       context: ./services/security_service
+       dockerfile: Dockerfile
+     tty: true
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
+  agentski-bekend:
+     image: agentski_bekend
+     build:
+       context: ./agentski_bekend
+       dockerfile: Dockerfile
+     tty: true
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
