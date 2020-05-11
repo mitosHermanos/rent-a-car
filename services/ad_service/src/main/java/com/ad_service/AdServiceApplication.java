@@ -13,7 +13,7 @@ public class AdServiceApplication {
 		SpringApplication.run(AdServiceApplication.class, args);
 	}
 
-	@RequestMapping("/hello")
+	@RequestMapping("/health")
 	public String sayHello(){
 		return "Hello from ad service!";
 	}

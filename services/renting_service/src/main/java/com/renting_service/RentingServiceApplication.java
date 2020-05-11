@@ -13,7 +13,7 @@ public class RentingServiceApplication {
 		SpringApplication.run(RentingServiceApplication.class, args);
 	}
 
-	@RequestMapping("/hello")
+	@RequestMapping("/health")
 	public String sayHello(){
 		return "Hello from renting service!";
 	}

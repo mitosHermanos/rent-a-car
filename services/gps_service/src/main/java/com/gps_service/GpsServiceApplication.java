@@ -13,7 +13,7 @@ public class GpsServiceApplication {
 		SpringApplication.run(GpsServiceApplication.class, args);
 	}
 
-	@RequestMapping("/hello")
+	@RequestMapping("/health")
 	public String sayHello(){
 		return "Hello from gps service!";
 	}
