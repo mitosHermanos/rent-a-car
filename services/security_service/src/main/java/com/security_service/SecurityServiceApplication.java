@@ -13,7 +13,7 @@ public class SecurityServiceApplication {
 		SpringApplication.run(SecurityServiceApplication.class, args);
 	}
 
-	@RequestMapping("/hello")
+	@RequestMapping("/health")
 	public String sayHello(){
 		return "Hello from security service!";
 	}
