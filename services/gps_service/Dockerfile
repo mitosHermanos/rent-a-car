@@ -1,9 +1,3 @@
-#<<<<<<< HEAD
-#FROM openjdk:8
-#COPY ./out/artifacts/gps_service_jar/* ./
-#EXPOSE 8286
-#ENTRYPOINT ["java","-jar","/gps_service.jar","--server.port=8286"]
-#=======
 FROM openjdk:8-jdk-alpine
 COPY entrypoint.sh /entrypoint.sh
 COPY target/gps_service-0.0.1-SNAPSHOT.jar gps_service-0.0.1-SNAPSHOT.jar
@@ -21,4 +15,3 @@ RUN apk --no-cache add \
     curl \
     unzip
 CMD ["/entrypoint.sh"]
-#>>>>>>> 0634ac0cffb801351d31455a94e7f99c6114e078
