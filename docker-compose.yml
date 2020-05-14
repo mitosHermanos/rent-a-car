@@ -90,13 +90,24 @@ services:
      depends_on:
        - consul-server
 
+  gateway:
+     image: gateway
+     build:
+       context: ./gateway
+       dockerfile: Dockerfile
+     tty: true
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
   agentski-frontend:
      image: agentski-frontend
      build:
        context: ./agentski-frontend
        dockerfile: Dockerfile
      tty: true
-     ports: 
+     ports:
       - "4200:80"
      networks:
        - static-network
