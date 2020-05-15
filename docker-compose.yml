@@ -19,6 +19,8 @@ services:
       context: ./services/admin_service
       dockerfile: Dockerfile
     tty: true
+    ports: 
+      - "127.0.0.1:8284:8284"
     networks:
       - static-network
     depends_on:
@@ -30,6 +32,8 @@ services:
       context: ./services/ad_service
       dockerfile: Dockerfile
     tty: true
+    ports: 
+      - "127.0.0.1:8283:8283"
     networks:
       - static-network
     depends_on:
@@ -41,6 +45,8 @@ services:
       context: ./services/renting_service
       dockerfile: Dockerfile
     tty: true
+    ports: 
+      - "127.0.0.1:8287:8287"
     networks:
       - static-network
     depends_on:
@@ -52,6 +58,8 @@ services:
       context: ./services/authentication_service
       dockerfile: Dockerfile
     tty: true
+    ports: 
+      - "127.0.0.1:8285:8285"
     networks:
       - static-network
     depends_on:
@@ -63,6 +71,8 @@ services:
        context: ./services/gps_service
        dockerfile: Dockerfile
      tty: true
+     ports: 
+      - "127.0.0.1:8286:8286"
      networks:
        - static-network
      depends_on:
@@ -74,6 +84,8 @@ services:
        context: ./services/security_service
        dockerfile: Dockerfile
      tty: true
+     ports: 
+      - "127.0.0.1:8288:8288"
      networks:
        - static-network
      depends_on:
@@ -85,6 +97,8 @@ services:
        context: ./agentski_bekend
        dockerfile: Dockerfile
      tty: true
+     ports: 
+      - "127.0.0.1:8282:8282"
      networks:
        - static-network
      depends_on:
@@ -97,7 +111,7 @@ services:
        dockerfile: Dockerfile
      tty: true
      ports: 
-      - "4200:80"
+      - "127.0.0.1:4200:80"
      networks:
        - static-network
      depends_on:
