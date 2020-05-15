@@ -1,15 +1,9 @@
 agent_backend	:	8282
-
 ad_service	:	8283
-
 admin_service	:	8284
-
 auth_service	:	8285
-
 gps_service	:	8286
-
 renting_service	:	8287
-
 security_service:	8288
-
+gateway         :       8289
 agent_frontend	:	4200
