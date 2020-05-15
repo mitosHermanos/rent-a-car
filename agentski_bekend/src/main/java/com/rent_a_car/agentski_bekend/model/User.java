@@ -2,7 +2,9 @@ package com.rent_a_car.agentski_bekend.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "user")
+@Table
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
 
     @Id

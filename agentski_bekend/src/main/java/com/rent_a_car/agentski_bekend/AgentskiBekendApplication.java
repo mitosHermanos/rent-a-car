@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-//@RestController
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@RestController
 @EntityScan("model")
 @EnableJpaRepositories(basePackages = "repository")
 @SpringBootApplication(scanBasePackages = {"model", "service", "repository", "controller"})
