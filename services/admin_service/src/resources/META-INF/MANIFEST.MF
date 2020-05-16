@@ -1,0 +1,61 @@
+Manifest-Version: 1.0
+Main-Class: com.admin_service.AdmnServiceApplication
+Class-Path: spring-aop-5.2.5.RELEASE.jar netflix-statistics-0.1.1.jar sp
+ ring-cloud-starter-netflix-archaius-2.2.2.RELEASE.jar httpcore-4.4.13.j
+ ar spring-data-commons-2.2.6.RELEASE.jar spring-boot-configuration-proc
+ essor-2.2.6.RELEASE.jar hibernate-core-5.4.12.Final.jar spring-data-jpa
+ -2.2.6.RELEASE.jar servo-internal-0.10.1.jar log4j-api-2.12.1.jar sprin
+ g-context-support-5.2.5.RELEASE.jar archaius-core-0.7.6.jar feign-form-
+ spring-3.8.0.jar jakarta.xml.bind-api-2.3.3.jar logback-core-1.2.3.jar 
+ spring-orm-5.2.5.RELEASE.jar rxnetty-contexts-0.4.9.jar log4j-to-slf4j-
+ 2.12.1.jar jaxb-runtime-2.3.2.jar lombok-1.18.12.jar spring-boot-starte
+ r-logging-2.2.6.RELEASE.jar jakarta.activation-api-1.2.2.jar spring-boo
+ t-starter-web-2.2.6.RELEASE.jar spring-aspects-5.2.5.RELEASE.jar feign-
+ slf4j-10.7.4.jar h2-1.4.200.jar stax-ex-1.8.1.jar aspectjweaver-1.9.5.j
+ ar spring-cloud-loadbalancer-2.2.2.RELEASE.jar HdrHistogram-2.1.9.jar s
+ pring-core-5.2.5.RELEASE.jar feign-core-10.7.4.jar spring-boot-starter-
+ jdbc-2.2.6.RELEASE.jar spring-boot-starter-tomcat-2.2.6.RELEASE.jar com
+ mons-configuration-1.8.jar servo-core-0.10.1.jar tomcat-embed-core-9.0.
+ 33.jar jakarta.validation-api-2.0.2.jar spring-boot-devtools-2.2.6.RELE
+ ASE.jar httpclient-4.5.12.jar spring-boot-starter-2.2.6.RELEASE.jar jak
+ arta.persistence-api-2.2.3.jar jackson-databind-2.10.3.jar spring-cloud
+ -netflix-hystrix-2.2.2.RELEASE.jar jackson-datatype-jdk8-2.10.3.jar fei
+ gn-form-3.8.0.jar commons-lang-2.6.jar jackson-annotations-2.10.3.jar j
+ oda-time-2.10.5.jar guava-16.0.1.jar spring-cloud-openfeign-core-2.2.2.
+ RELEASE.jar dom4j-2.1.1.jar commons-collections-3.2.2.jar spring-webmvc
+ -5.2.5.RELEASE.jar netflix-commons-util-0.1.1.jar spring-cloud-netflix-
+ ribbon-2.2.2.RELEASE.jar txw2-2.3.2.jar commons-codec-1.13.jar spring-b
+ eans-5.2.5.RELEASE.jar jsr305-3.0.1.jar jersey-apache-client4-1.19.1.ja
+ r jul-to-slf4j-1.7.30.jar spring-boot-2.2.6.RELEASE.jar spring-cloud-co
+ mmons-2.2.2.RELEASE.jar spring-jdbc-5.2.5.RELEASE.jar commons-fileuploa
+ d-1.4.jar javassist-3.24.0-GA.jar spring-cloud-starter-2.2.2.RELEASE.ja
+ r jakarta.transaction-api-1.3.3.jar spring-jcl-5.2.5.RELEASE.jar evicto
+ r-1.0.0.jar rxnetty-0.4.9.jar FastInfoset-1.2.16.jar spring-cloud-start
+ er-netflix-ribbon-2.2.2.RELEASE.jar feign-hystrix-10.7.4.jar spring-boo
+ t-starter-aop-2.2.6.RELEASE.jar spring-security-rsa-1.0.9.RELEASE.jar s
+ pring-boot-starter-cache-2.2.6.RELEASE.jar tomcat-embed-websocket-9.0.3
+ 3.jar istack-commons-runtime-3.0.8.jar jackson-datatype-jsr310-2.10.3.j
+ ar spring-cloud-starter-loadbalancer-2.2.2.RELEASE.jar spring-security-
+ crypto-5.2.2.RELEASE.jar hystrix-core-1.5.18.jar logback-classic-1.2.3.
+ jar javax.inject-1.jar reactive-streams-1.0.3.jar ribbon-httpclient-2.3
+ .0.jar jakarta.annotation-api-1.3.5.jar jackson-core-2.10.3.jar hiberna
+ te-validator-6.0.18.Final.jar rxnetty-servo-0.4.9.jar jersey-client-1.1
+ 9.1.jar spring-context-5.2.5.RELEASE.jar hibernate-commons-annotations-
+ 5.1.0.Final.jar slf4j-api-1.7.30.jar tomcat-embed-el-9.0.33.jar reactor
+ -core-3.3.4.RELEASE.jar consul-api-1.4.1.jar spring-boot-starter-valida
+ tion-2.2.6.RELEASE.jar spring-cloud-consul-core-2.2.2.RELEASE.jar snake
+ yaml-1.25.jar bcprov-jdk15on-1.64.jar spring-boot-starter-json-2.2.6.RE
+ LEASE.jar spring-boot-starter-data-jpa-2.2.6.RELEASE.jar ribbon-2.3.0.j
+ ar spring-cloud-starter-consul-2.2.2.RELEASE.jar spring-cloud-context-2
+ .2.2.RELEASE.jar spring-tx-5.2.5.RELEASE.jar bcpkix-jdk15on-1.64.jar sp
+ ring-cloud-consul-discovery-2.2.2.RELEASE.jar spring-expression-5.2.5.R
+ ELEASE.jar ribbon-loadbalancer-2.3.0.jar rxjava-1.3.8.jar spring-boot-a
+ utoconfigure-2.2.6.RELEASE.jar spring-cloud-netflix-archaius-2.2.2.RELE
+ ASE.jar reactor-extra-3.3.3.RELEASE.jar HikariCP-3.4.2.jar spring-web-5
+ .2.5.RELEASE.jar jersey-core-1.19.1.jar ribbon-transport-2.3.0.jar spri
+ ng-cloud-starter-openfeign-2.2.2.RELEASE.jar jackson-module-parameter-n
+ ames-2.10.3.jar gson-2.8.6.jar jsr311-api-1.1.1.jar ribbon-core-2.3.0.j
+ ar jandex-2.1.1.Final.jar jboss-logging-3.4.1.Final.jar commons-io-2.2.
+ jar antlr-2.7.7.jar byte-buddy-1.10.8.jar spring-cloud-starter-consul-d
+ iscovery-2.2.2.RELEASE.jar classmate-1.5.1.jar
+
