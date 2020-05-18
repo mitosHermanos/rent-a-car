@@ -27,13 +27,13 @@ CREATE TABLE companies (
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
 
-CREATE TABLE car_models (
+CREATE TABLE manufacturers (
 	id INTEGER, 
-    name VARCHAR(50),
+    name VARCHAR(50), 
     deleted VARCHAR(6), 
     
-    CONSTRAINT pk_carModels PRIMARY KEY (id), 
-    CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
+    CONSTRAINT pk_manufacturer PRIMARY KEY (id), 
+    CONSTRAINT chk_manufacturer CHECK (deleted IN ('true', 'false'))
 );
 
 CREATE TABLE car_class (
@@ -42,6 +42,19 @@ CREATE TABLE car_class (
     deleted VARCHAR(6), 
     
     CONSTRAINT pk_carClass PRIMARY KEY (id), 
+    CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
+);
+
+CREATE TABLE car_models (
+	id INTEGER, 
+    name VARCHAR(50),
+    manufacturer INTEGER,
+    class INTEGER, 
+    deleted VARCHAR(6), 
+    
+    CONSTRAINT pk_carModels PRIMARY KEY (id), 
+    CONSTRAINT fk_carModelsManufacturer FOREIGN KEY (manufacturer) REFERENCES manufacturers (id),
+    CONSTRAINT fk_CarModelClass FOREIGN KEY (class) REFERENCES car_class (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
 
@@ -78,7 +91,6 @@ CREATE TABLE cars (
     owner INTEGER, 
     company INTEGER, 
     model INTEGER, 
-    class INTEGER, 
     fuel_type INTEGER, 
     pricing INTEGER, 
     milage DOUBLE, 
@@ -89,7 +101,6 @@ CREATE TABLE cars (
     CONSTRAINT fk_carCompany FOREIGN KEY (company) REFERENCES companies(id), 
     CONSTRAINT chk_oneOwner CHECK ((company = null) OR (owner = null)),
     CONSTRAINT fk_carModel FOREIGN KEY (model) REFERENCES car_models(id), 
-    CONSTRAINT fk_carClass FOREIGN KEY (class) REFERENCES car_class(id),     
     CONSTRAINT fk_carFuelType FOREIGN KEY (fuel_type) REFERENCES fuel_types(id), 
     CONSTRAINT fk_carPricing FOREIGN KEY (pricing) REFERENCES pricings (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
@@ -200,13 +211,13 @@ CREATE TABLE reciept_article (
 );
 
 
-
-CREATE VIEW login_view AS 
-	SELECT u.email, u.password, 'USER'
-    FROM users u
-    UNION 
-    SELECT c.email, c.password, 'COMPANY'
-    FROM companies c
-    UNION 
-    SELECT g.email, g.password, 'CAR'
-    FROM gps_position g;
+-- 
+-- CREATE VIEW login_view AS 
+-- 	SELECT u.email, u.password, 'USER'
+--     FROM users u
+--     UNION 
+--     SELECT c.email, c.password, 'COMPANY'
+--     FROM companies c
+--     UNION 
+--     SELECT g.email, g.password, 'CAR'
+--     FROM gps_position g;
