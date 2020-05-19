@@ -2,8 +2,8 @@ package com.rent_a_car.agentski_bekend.model;
 
 import javax.persistence.*;
 
-@Entity(name = "user")
-@Table
+@Entity
+@Table(name = "user")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
 
@@ -12,10 +12,10 @@ public class User {
     @Column(name="user_id", nullable=false, unique=true)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name="username", nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(name="password", nullable = false, unique = true)
     private String password;
 
     public User() {

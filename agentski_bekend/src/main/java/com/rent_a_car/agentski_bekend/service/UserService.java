@@ -14,8 +14,6 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private UserRepository userRepository;
 
-    public UserService() {
-    }
 
     @Override
     public User findById(long id) {
