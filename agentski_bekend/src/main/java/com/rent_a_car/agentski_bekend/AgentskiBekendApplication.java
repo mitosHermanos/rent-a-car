@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@EnableAutoConfiguration//(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @RestController
 public class AgentskiBekendApplication {
 
@@ -19,7 +19,15 @@ public class AgentskiBekendApplication {
 
 	@RequestMapping("/health")
 	public String sayHello(){
-		return "Hello from agent backend!";
+//		Person percy = new Person ();
+//		percy.setFirstName("Percy");
+//		percy.setLastName("the Person");
+//		People people = new People();
+		String retVal = "";
+//		for (Person p : people.getAllThePeople()) {
+//			retVal += p.getFirstName();
+//		}
+		return "Hello from agent backend!" + " " + retVal;
 	}
 
 }
