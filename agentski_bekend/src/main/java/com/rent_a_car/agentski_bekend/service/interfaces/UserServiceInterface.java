@@ -1,7 +1,6 @@
 package com.rent_a_car.agentski_bekend.service.interfaces;
 
 import com.rent_a_car.agentski_bekend.model.User;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

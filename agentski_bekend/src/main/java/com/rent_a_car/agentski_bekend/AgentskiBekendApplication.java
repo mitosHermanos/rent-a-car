@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@EnableAutoConfiguration//(exclude={DataSourceAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class/*, HibernateJpaAutoConfiguration.class*/})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class/*, HibernateJpaAutoConfiguration.class*/})
 @RestController
-@EntityScan("model")
-@EnableJpaRepositories(basePackages = "repository")
+//@EntityScan("model")
+//@EnableJpaRepositories(basePackages = "repository")
 @EnableJpaAuditing
-@SpringBootApplication(scanBasePackages = {"model", "service", "repository", "controller"})
-
+@SpringBootApplication//(scanBasePackages = {"model", "service", "repository", "controller"})
 public class AgentskiBekendApplication {
 
 	public static void main(String[] args) {

@@ -1,51 +1,33 @@
 package com.rent_a_car.agentski_bekend.controller;
 
-import com.rent_a_car.agentski_bekend.dto.UserDTO;
 import com.rent_a_car.agentski_bekend.model.User;
+import com.rent_a_car.agentski_bekend.service.UserService;
 import com.rent_a_car.agentski_bekend.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
 
 @RestController
-@RequestMapping(value="/api", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class TestController {
 
     @Autowired
-    private UserServiceInterface userService;
+    private UserService userService;
 
     @RequestMapping
     public String testService () {
         return "'Ziv sam' - Agentski servis";
     }
 
-
-    @RequestMapping(path = "/login", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Void> register(@RequestBody UserDTO dto) {
-        User user = new User();
-        user.setPassword(dto.getPassword());
-        user.setUsername(dto.getUsername());
-        userService.save(user);
-//        System.out.println(dto.getUsername()+" + " + dto.getPassword());
-//        if(dto.getUsername().equals("pera") && dto.getPassword().equals("peric")){
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        }
-//
-//        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        return new ResponseEntity<>(HttpStatus.OK);
+    @PostMapping("/add")
+    public User saveUser(@RequestBody User user){
+        return userService.save(user);
     }
 
-    @RequestMapping(path="/proba", method=RequestMethod.POST)
-    public void init(){
-        User u = new User();
-        u.setUsername("mika");
-        u.setPassword("antic");
-        userService.save(u);
+    @GetMapping("/get")
+    public List<User> getUsers(){
+        return userService.findAll();
     }
 
 }

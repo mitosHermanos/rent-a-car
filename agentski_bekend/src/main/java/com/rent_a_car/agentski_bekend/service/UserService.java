@@ -9,28 +9,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService implements UserServiceInterface {
+public class UserService/* implements UserServiceInterface */{
 
     @Autowired
     private UserRepository userRepository;
 
 
-    @Override
-    public User findById(long id) {
-        return userRepository.findById(id);
+    //@Override
+    public User findById(Integer id) {
+        return userRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
+    //@Override
+//    public User findByUsername(String username) {
+//        return userRepository.findByUsername(username);
+//    }
 
-    @Override
+    //@Override
     public User save(User user) {
         return userRepository.save(user);
     }
 
-    @Override
+    //@Override
     public List<User> findAll() {
         List<User> result = userRepository.findAll();
         return result;
