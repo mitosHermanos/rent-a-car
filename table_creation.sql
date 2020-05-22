@@ -45,16 +45,27 @@ CREATE TABLE car_class (
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
 
+CREATE TABLE transmission_type (
+	id INTEGER, 
+    name VARCHAR(50), 
+    deleted VARCHAR(6), 
+    
+    CONSTRAINT fk_transmissionType PRIMARY KEY (id), 
+    CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
+);
+
 CREATE TABLE car_models (
 	id INTEGER, 
     name VARCHAR(50),
     manufacturer INTEGER,
-    class INTEGER, 
+    class INTEGER,
+    transmission INTEGER, 
     deleted VARCHAR(6), 
     
     CONSTRAINT pk_carModels PRIMARY KEY (id), 
     CONSTRAINT fk_carModelsManufacturer FOREIGN KEY (manufacturer) REFERENCES manufacturers (id),
-    CONSTRAINT fk_CarModelClass FOREIGN KEY (class) REFERENCES car_class (id), 
+    CONSTRAINT fk_carModelClass FOREIGN KEY (class) REFERENCES car_class (id), 
+    CONSTRAINT fk_carModelTransmission FOREIGN KEY (transmission) REFERENCES transmission_type (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
 

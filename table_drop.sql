@@ -11,6 +11,7 @@ DROP TABLE cars;
 DROP TABLE pricings;
 DROP TABLE fuel_types;
 DROP TABLE car_models;
+DROP TABLE transmission_type;
 DROP TABLE car_class;
 DROP TABLE manufacturers;
 DROP TABLE companies;
