@@ -23,7 +23,7 @@ public class InitializeService {
     public void init(){
 
 //        Privilege pr = new Privilege();
-//        pr.setName("pr1");
+//        pr.setName("codebook_management");
 //        privilegeRepository.save(pr);
 //
 //        Role r = new Role();

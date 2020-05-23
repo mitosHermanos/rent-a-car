@@ -1,12 +1,14 @@
 package com.rent_a_car.agentski_bekend.model;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Table(name = "role_table")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Role {
+public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,5 +64,11 @@ public class Role {
 
     public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
+    }
+
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }
