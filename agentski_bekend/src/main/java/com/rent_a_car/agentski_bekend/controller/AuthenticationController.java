@@ -4,10 +4,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.rent_a_car.agentski_bekend.model.User;
+import com.rent_a_car.agentski_bekend.security.auth.JwtAuthenticationRequest;
+import com.rent_a_car.agentski_bekend.service.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.ws.rs.core.SecurityContext;
 
 //import com.webencyclop.demo.model.User; TODO import user
 
-@Controller
+@RestController
 public class AuthenticationController {
 
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
@@ -32,23 +45,6 @@ public class AuthenticationController {
         modelAndView.setViewName("home"); // resources/template/home.html
         return modelAndView;
     }
-}
-import com.rent_a_car.agentski_bekend.model.User;
-import com.rent_a_car.agentski_bekend.security.auth.JwtAuthenticationRequest;
-import com.rent_a_car.agentski_bekend.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.ws.rs.core.SecurityContext;
-
-@RestController
-public class AuthenticationController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -69,3 +65,4 @@ public class AuthenticationController {
 //        String jwt = tokenUtils
 //    }
 }
+
