@@ -13,130 +13,157 @@ services:
       static-network:
         ipv4_address: 172.20.0.2
 
-  admin-service:
-    image: admin_service
-    build:
-      context: ./services/admin_service
-      dockerfile: Dockerfile
-    tty: true
-    ports: 
-      - "127.0.0.1:8284:8284"
-    networks:
-      - static-network
-    depends_on:
-      - consul-server
+#  admin-service:
+#   image: admin_service
+#    build:
+#      context: ./services/admin_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    ports:
+#      - "127.0.0.1:8284:8284"
+#    networks:
+#      - static-network
+#    depends_on:
+#      - consul-server
 
-  ad-service:
-    image: ad_service
-    build:
-      context: ./services/ad_service
-      dockerfile: Dockerfile
-    tty: true
-    ports: 
-      - "127.0.0.1:8283:8283"
-    networks:
-      - static-network
-    depends_on:
-      - consul-server
+#  ad-service:
+#    image: ad_service
+#    build:
+#      context: ./services/ad_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    ports:
+#      - "127.0.0.1:8283:8283"
+#    networks:
+#      - static-network
+#    depends_on:
+#      - consul-server
 
-  renting-service:
-    image: renting_service
-    build:
-      context: ./services/renting_service
-      dockerfile: Dockerfile
-    tty: true
-    ports: 
-      - "127.0.0.1:8287:8287"
-    networks:
-      - static-network
-    depends_on:
-      - consul-server
+#  renting-service:
+#    image: renting_service
+#    build:
+#      context: ./services/renting_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    ports:
+#      - "127.0.0.1:8287:8287"
+#    networks:
+#      - static-network
+#    depends_on:
+#      - consul-server
 
-  authentication-service:
-    image: authentication_service
-    build:
-      context: ./services/authentication_service
-      dockerfile: Dockerfile
-    tty: true
-    ports: 
-      - "127.0.0.1:8285:8285"
-    networks:
-      - static-network
-    depends_on:
-      - consul-server
+#  authentication-service:
+#    image: authentication_service
+#    build:
+#      context: ./services/authentication_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    ports:
+#      - "127.0.0.1:8285:8285"
+#    networks:
+#      - static-network
+#    depends_on:
+#      - consul-server
 
-  gps-service:
-     image: gps_service
-     build:
-       context: ./services/gps_service
-       dockerfile: Dockerfile
-     tty: true
-     ports: 
-      - "127.0.0.1:8286:8286"
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
+#  gps-service:
+#     image: gps_service
+#     build:
+#       context: ./services/gps_service
+#       dockerfile: Dockerfile
+#     tty: true
+#     ports:
+#      - "127.0.0.1:8286:8286"
+#     networks:
+#       - static-network
+#     depends_on:
+#       - consul-server
 
-  security-service:
-     image: security_service
-     build:
-       context: ./services/security_service
-       dockerfile: Dockerfile
-     tty: true
-     ports: 
-      - "127.0.0.1:8288:8288"
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
+#  security-service:
+#     image: security_service
+#     build:
+#       context: ./services/security_service
+#       dockerfile: Dockerfile
+#     tty: true
+#     ports:
+#      - "127.0.0.1:8288:8288"
+#     networks:
+#       - static-network
+#     depends_on:
+#       - consul-server
 
-  agentski-bekend:
-     image: agentski_bekend
-     build:
-       context: ./agentski_bekend
-       dockerfile: Dockerfile
-     tty: true
-     ports: 
-      - "127.0.0.1:8282:8282"
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
+#  agentski-bekend:
+#     image: agentski_bekend
+#     build:
+#       context: ./agentski_bekend
+#       dockerfile: Dockerfile
+#     tty: true
+#     ports:
+#      - "127.0.0.1:8282:8282"
+#     networks:
+#       - static-network
+#     depends_on:
+#       - consul-server
+#       - agentska-baza
+#     environment:
+#       DATABASE_USERMANE: root
+#       DATABASE_PASSWORD: admin
+#       DATABASE_DOMAIN: mysql
+#       DATABASE_PORT: "127.0.0.1:3306"
 
-  gateway:
-     image: gateway
-     build:
-       context: ./gateway
-       dockerfile: Dockerfile
-     tty: true
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
+#  gateway:
+#     image: gateway
+#     build:
+#       context: ./gateway
+#       dockerfile: Dockerfile
+#     tty: true
+#     networks:
+#       - static-network
+#     depends_on:
+#       - consul-server
 
-  agentski-frontend:
-     image: agentski-frontend
-     build:
-       context: ./agentski-frontend
-       dockerfile: Dockerfile
-     tty: true
-     ports: 
-      - "127.0.0.1:4200:80"
-     networks:
-       - static-network
-     depends_on:
-       - agentski-bekend
+#  agentski-frontend:
+#     image: agentski-frontend
+#     build:
+#       context: ./agentski-frontend
+#       dockerfile: Dockerfile
+#     tty: true
+#     ports:
+#      - "127.0.0.1:4200:80"
+#     networks:
+#       - static-network
+#     depends_on:
+#       - agentski-bekend
 
-  mysql:
-    image: mysql:8.0.19
-    container_name: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: sa
-      MYSQL_PASSWORD: zgadija
-      MYSQL_DATABASE: servers
+#  agentska-baza:
+#    restart: always
+#    image: mysql
+##	build:
+##	  context: ./agentska_baza
+##	  dockerfile: Dockerfile
+#    environment:
+#      MYSQL_DATABASE: agentski_bekend
+#      MYSQL_ROOT_PASSWORD: admin
+#      MYSQL_USER: mysql
+#      MYSQL_PASSWORD: admin
+##    volumes:
+##      - ./sql:/docker-entrypoint-initdb.d
+#    ports:
+#      - "127.0.0.1:6033:3306"
+##    healthcheck:
+##      test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
+##      interval: 2s
+##      timeout: 20s
+##      retries: 10
+
+#  mysql:
+#    image: mysql:8.0.19
+#    container_name: mysql
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: password
+#      MYSQL_USER: sa
+#      MYSQL_PASSWORD: zgadija
+#      MYSQL_DATABASE: servers
 #    volumes:
 #      - mysql-data:/var/lib/mysql
 
