@@ -1,9 +1,12 @@
 package com.rent_a_car.agentski_bekend.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -17,9 +20,13 @@ public class User implements Serializable, UserDetails {
     @Column(name="user_id", nullable=false, unique=true)
     private Integer id;
 
+    @NotNull
+    @Email    // hybernate validator
     @Column(name="email", nullable = false, unique = true)
     private String email;
 
+    @NotNull
+    @Size(min = 5, max = 15)
     @Column(name="password", nullable = false, unique = true)
     private String password;
 

@@ -9,15 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
 
 
-public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public  abstract class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Bean   // ili druga verzija
     public BCryptPasswordEncoder passwordEncoder() {
@@ -51,6 +50,24 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
                 .accessDeniedPage("/access-denied");
     }
 
+    @Override
+    public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {
+        pathMatchConfigurer.setUseSuffixPatternMatch(false);
+    }
+
+    @Override
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    @Bean
+    public InternalResourceViewResolver htmlViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("/WEB-INF/html/");
+        bean.setSuffix(".html");
+        return bean;
+    }
 
   /*  @Bean
     @Override
