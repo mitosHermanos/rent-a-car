@@ -1,1 +1,1 @@
-<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+﻿<div *ngIf="message" [ngClass]="message.cssClass">{{message.text}}</div>
