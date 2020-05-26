@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
     currentUser: User;
     users = [];
 
+    username:string;
+
     constructor(
         private authenticationService: AuthenticationService,
         private userService: UserService
@@ -18,5 +20,9 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    onSubmit(){
+        
     }
 }

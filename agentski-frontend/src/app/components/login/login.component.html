@@ -32,12 +32,12 @@
         </div> -->
         <!-- Login Form -->
         <!-- <form> -->
-<!--            <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="email">-->
-<!--            <input type="password" id="password" class="fadeIn third" nmae="password" placeholder="password" [(ngModel)]="password">-->
-<!--            &lt;!&ndash; <input type="submit" class="fadeIn fourth" value="Log In" id="submitLogin"> &ndash;&gt;-->
-<!--            <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Log in</button>-->
+           <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="email">
+           <input type="password" id="password" class="fadeIn third" nmae="password" placeholder="password" [(ngModel)]="password">
+          <!-- <input type="submit" class="fadeIn fourth" value="Log In" id="submitLogin"> -->
+            <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Log in</button>
         <!-- </form> -->
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
@@ -61,7 +61,7 @@
                 </button>
 
             </div>
-        </form>
+        </form> -->
         <button class="btn btn-primary" (click)="gotoRegister()">Register</button>
 
         <!-- Remind Passowrd -->

@@ -19,12 +19,17 @@ export class RegisterComponent implements OnInit {
     loading = false;
     submitted = false;
 
+    email:string;
+    password:string;
+    user:User;
+
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
         private userService: UserService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private registerService: RegisterService
     ) {
         // redirect to home if already logged in
       //  if (this.authenticationService.currentUserValue) {
@@ -33,29 +38,32 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
+        // this.registerForm = this.formBuilder.group({
             
-            email: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+        //     email: ['', Validators.required],
+        //     password: ['', [Validators.required, Validators.minLength(6)]]
+        // });
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        this.submitted = true;
+        //this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+      //  this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
+        // if (this.registerForm.invalid) {
+        //     return;
+        // }
 
+        console.log(this.email);
+        console.log(this.password);
+        this.user={email:this.email, password:this.password};
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.registerService.onRegister(this.user)
             .pipe(first())
             .subscribe(
                 data => {
@@ -63,6 +71,7 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
+                    alert("Invalid email");
                     this.alertService.error(error);
                     this.loading = false;
                 });

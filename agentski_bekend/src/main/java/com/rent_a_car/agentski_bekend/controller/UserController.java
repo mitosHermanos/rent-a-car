@@ -1,12 +1,17 @@
 package com.rent_a_car.agentski_bekend.controller;
 
+import com.rent_a_car.agentski_bekend.dto.UserDTO;
 import com.rent_a_car.agentski_bekend.model.User;
+import com.rent_a_car.agentski_bekend.service.UserService;
+import org.owasp.encoder.Encode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,13 +44,11 @@ public class UserController {
         }
     }
 
+    @Autowired
+    private UserService userService;
+
     private List<User> users = Arrays.asList();
 
-    @GetMapping(value = "/users")
-    @ResponseBody
-    public List<User> getUsers() {
-        return users;
-    }
 
         //kada se uloguje
     @GetMapping("/userPage")
