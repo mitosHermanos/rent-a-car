@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import {User} from '../models/User'
+import {RegisterUser} from '../models/RegisterUser'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,16 +14,16 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegisterService {
   
-  loginUser:User;
-  url:string = 'http://localhost:8282/api/login';
+  registerUser:RegisterUser;
+  url:string = 'http://localhost:8282/api/register';
 
   constructor(private http:HttpClient) { }
 
-  onLogin(loginUser: User): Observable<User>{
+  onRegister(registerUser: RegisterUser): Observable<RegisterUser>{
     console.log('sending');
-    return this.http.post<User>(this.url, loginUser, httpOptions);
+    return this.http.post<RegisterUser>(this.url, registerUser, httpOptions);
     
 
   }

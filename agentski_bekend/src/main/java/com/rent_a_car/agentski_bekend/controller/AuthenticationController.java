@@ -23,7 +23,7 @@ import javax.ws.rs.core.SecurityContext;
 @RestController
 public class AuthenticationController {
 
-    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login"); // resources/template/login.html
@@ -33,8 +33,8 @@ public class AuthenticationController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         ModelAndView modelAndView = new ModelAndView();
-        // User user = new User();
-        // modelAndView.addObject("user", user);
+         User user = new User();
+         modelAndView.addObject("user", user);
         modelAndView.setViewName("register"); // resources/template/register.html
         return modelAndView;
     }
