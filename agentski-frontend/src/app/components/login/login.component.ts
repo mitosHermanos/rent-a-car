@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginUser } from 'src/app/models/LoginUser';
 import { User } from 'src/app/models/User';
 import { LoginService } from '../../services/login.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -13,6 +14,10 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginUser: LoginUser;
+  myInput: string;
+  email: string;
+  password: string;
     loginForm: FormGroup;
     loading = false;
     submitted = false;
@@ -23,7 +28,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private loginService: LoginService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -33,41 +39,56 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            email: ['',[ Validators.required, Validators.email]], 
+            email: ['',[ Validators.required, Validators.email]],
             password: ['', Validators.required]
         });
 
-        // get return url from route parameters or default to '/'
+
+
+     // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
-    onSubmit() {
+
+//   onSubmit(){
+//     console.log(this.email);
+//     console.log(this.password);
+//
+//     this.loginUser = {email: this.email, password: this.password};
+//     console.log(this.loginUser);
+//
+//     this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
+//       console.log(data);
+//     });
+//   }
+
+ onSubmit() {
         this.submitted = true;
 
         // reset alerts on submit
         this.alertService.clear();
 
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
+      // stop here if form is invalid
+          if (this.loginForm.invalid) {
+              return;
+          }
 
-        this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
-   
+          this.loading = true;
+          this.authenticationService.login(this.f.email.value, this.f.password.value)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                      this.router.navigate([this.returnUrl]);
+                  },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+                  });
+      }
+
 
 gotoRegister(){
     console.log("register*******");

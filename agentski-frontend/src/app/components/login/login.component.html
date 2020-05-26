@@ -31,6 +31,12 @@
             <button class="btn" (click)="onSubmit()">Add</button>
         </div> -->
         <!-- Login Form -->
+        <!-- <form> -->
+<!--            <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="email">-->
+<!--            <input type="password" id="password" class="fadeIn third" nmae="password" placeholder="password" [(ngModel)]="password">-->
+<!--            &lt;!&ndash; <input type="submit" class="fadeIn fourth" value="Log In" id="submitLogin"> &ndash;&gt;-->
+<!--            <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Log in</button>-->
+        <!-- </form> -->
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="email">Email</label>
@@ -55,7 +61,7 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
-            
+
             </div>
         </form>
         <button class="btn btn-primary" (click)="gotoRegister()">Register</button>

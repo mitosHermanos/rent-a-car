@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -67,6 +68,11 @@ public class User implements Serializable, UserDetails {
     public Collection<Role> getRole() {
         return role;
     }
+
+    public Role getRola(){
+        ArrayList rols = new ArrayList<>();
+        rols = (ArrayList) role;
+        return (Role) rols.get(0);}
 
     public void setRole(Collection<Role> role) {
         this.role = role;
