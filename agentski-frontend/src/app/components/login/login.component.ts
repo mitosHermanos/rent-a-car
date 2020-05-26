@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required], 
+            email: ['',[ Validators.required, Validators.email]], 
             password: ['', Validators.required]
         });
 
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
 
 gotoRegister(){
     console.log("register*******");
-    this.router.navigate(['/register']);  // define your component where you want to go
+    this.router.navigateByUrl('register');  // define your component where you want to go
 }
 
 
