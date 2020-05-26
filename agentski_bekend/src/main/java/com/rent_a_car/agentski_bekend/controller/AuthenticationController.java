@@ -1,6 +1,7 @@
 package com.rent_a_car.agentski_bekend.controller;
 
 import com.rent_a_car.agentski_bekend.model.User;
+import com.rent_a_car.agentski_bekend.security.auth.JwtAuthenticationRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
