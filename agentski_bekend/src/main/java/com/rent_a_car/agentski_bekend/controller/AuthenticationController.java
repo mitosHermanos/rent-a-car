@@ -1,5 +1,6 @@
 package com.rent_a_car.agentski_bekend.controller;
 
+import com.rent_a_car.agentski_bekend.dto.UserDTO;
 import com.rent_a_car.agentski_bekend.model.UserTokenState;
 import com.rent_a_car.agentski_bekend.security.TokenUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,8 +31,8 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView register() {
+    @PostMapping(value = "/register")
+    public ModelAndView register(@RequestBody UserDTO dto) {
         ModelAndView modelAndView = new ModelAndView();
          User user = new User();
          modelAndView.addObject("user", user);
@@ -46,8 +47,8 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -67,18 +68,18 @@ public class AuthenticationController {
         UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
                         authenticationRequest.getPassword());
 
-        final Authentication authentication = authenticationManager
-                .authenticate(upat);
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-
-        String jwt = tokenUtils.generateToken(user.getEmail());
-        int expiresIn = tokenUtils.getExpiredId();
-
-        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
-
+//        final Authentication authentication = authenticationManager
+//                .authenticate(upat);
+//
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+//        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+//
+//        String jwt = tokenUtils.generateToken(user.getEmail());
+//        int expiresIn = tokenUtils.getExpiredId();
+//
+//        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+            return null;
     }
 }
 

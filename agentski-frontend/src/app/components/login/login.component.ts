@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private loginService: LoginService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-  constructor(private loginService:LoginService) { }
+  //constructor(private loginService:LoginService) { }
 
     ngOnInit() {
           this.loginForm = this.formBuilder.group({
@@ -91,8 +92,11 @@ export class LoginComponent implements OnInit {
       }
 
 
-  gotoRegister(){
-      this.router.navigate(['/register']);  // define your component where you want to go
-  }
+  gotoRegister()
+  {
+      console.log("register++++");
+      //this.router.navigate(['/register']);  // define your component where you want to go
+      this.router.navigateByUrl('register');
+    }
 
 }
