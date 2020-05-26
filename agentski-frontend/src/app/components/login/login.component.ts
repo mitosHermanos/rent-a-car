@@ -10,7 +10,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
   loginUser: LoginUser;
   myInput: string;
-  username: string;
+  email: string;
   password: string;
 
   constructor(private loginService:LoginService) { }
@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.username);
+    console.log(this.email);
     console.log(this.password);
     
-    this.loginUser = {username: this.username, password: this.password};
+    this.loginUser = {email: this.email, password: this.password};
     console.log(this.loginUser);
 
     this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
