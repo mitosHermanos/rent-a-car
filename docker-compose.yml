@@ -1,17 +1,29 @@
 version: '3'
 services:
 
-  consul-server:
-    image: consul-server
-    build:
-      context: ./consul-server
-      dockerfile: Dockerfile
+  eureka:
+    build: ./eureka
+    container name: eureka
+    ports:
+     - "8761:8761"
     tty: true
-    ports: 
-      - "8500:8500"
-    networks:
-      static-network:
-        ipv4_address: 172.20.0.2
+
+  zuul:
+    build: ./zuul
+    container name: zuul
+    ports:
+    - "8083:8083"
+    environment:
+      - REGISTRY_HOST=eureka-serviceregistry
+    tty: true
+    depends_on:
+      - eureka
+      - ad-service
+      - admin-service
+      - authentication-service
+      - gps-service
+      - security-service
+      - renting-service
 
   nginx:
     image: nginx:latest
@@ -35,12 +47,14 @@ services:
       context: ./services/admin_service
       dockerfile: Dockerfile
     tty: true
+    environment:
+      - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8284:444"
+      - "8284:444"
     networks:
       - static-network
     depends_on:
-      - consul-server
+      - eureka
 
   ad-service:
     image: ad_service
@@ -49,12 +63,14 @@ services:
       context: ./services/ad_service
       dockerfile: Dockerfile
     tty: true
+    environment:
+      - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8283:443"
+      - "8283:443"
     networks:
       - static-network
     depends_on:
-      - consul-server
+      - eureka
 
   renting-service:
     image: renting_service
@@ -63,12 +79,14 @@ services:
       context: ./services/renting_service
       dockerfile: Dockerfile
     tty: true
+    environment:
+      - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8287:447"
+      - "8287:447"
     networks:
       - static-network
     depends_on:
-      - consul-server
+      - eureka
 
   authentication-service:
     image: authentication_service
@@ -77,73 +95,68 @@ services:
       context: ./services/authentication_service
       dockerfile: Dockerfile
     tty: true
+    environment:
+      - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8285:445"
+      - "8285:445"
     networks:
       - static-network
     depends_on:
-      - consul-server
+      - eureka
 
   gps-service:
-     image: gps_service
-     container_name: gps-service
-     build:
-       context: ./services/gps_service
-       dockerfile: Dockerfile
-     tty: true
-     ports:
+    image: gps_service
+    container_name: gps-service
+    build:
+      context: ./services/gps_service
+      dockerfile: Dockerfile
+    tty: true
+    environment:
+      - REGISTRY_HOST=eureka
+    ports:
       - "127.0.0.1:8286:446"
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
+    networks:
+      - static-network
+    depends_on:
+      - eureka
 
   security-service:
-     image: security_service
-     container_name: security-service
+    image: security_service
+    container_name: security-service
+    build:
+      context: ./services/security_service
+      dockerfile: Dockerfile
+    tty: true
+    environment:
+      - REGISTRY_HOST=eureka
+    ports:
+      - "127.0.0.1:8288:448"
+    networks:
+      - static-network
+    depends_on:
+      - eureka
+
+
+  agentski-bekend:
+     image: agentski_bekend
      build:
-       context: ./services/security_service
+       context: ./agentski_bekend
        dockerfile: Dockerfile
      tty: true
      ports:
-      - "127.0.0.1:8288:448"
+      - "127.0.0.1:8282:8282"
      networks:
        - static-network
      depends_on:
        - consul-server
-#     environment:
-#       CONSUL_HTTP_SSL: "true"
-#       CONSUL_HTTP_ADDR: "https://127:0:0:1:8500"
+       - agentska-baza
+     environment:
+       DATABASE_USERMANE: root
+       DATABASE_PASSWORD: admin
+       DATABASE_DOMAIN: mysql
+       DATABASE_PORT: "127.0.0.1:3306"
 
-#  agentski-bekend:
-#     image: agentski_bekend
-#     build:
-#       context: ./agentski_bekend
-#       dockerfile: Dockerfile
-#     tty: true
-#     ports:
-#      - "127.0.0.1:8282:8282"
-#     networks:
-#       - static-network
-#     depends_on:
-#       - consul-server
-#       - agentska-baza
-#     environment:
-#       DATABASE_USERMANE: root
-#       DATABASE_PASSWORD: admin
-#       DATABASE_DOMAIN: mysql
-#       DATABASE_PORT: "127.0.0.1:3306"
 
-#  gateway:
-#     image: gateway
-#     build:
-#       context: ./gateway
-#       dockerfile: Dockerfile
-#     tty: true
-#     networks:
-#       - static-network
-#     depends_on:
-#       - consul-server
 
 #  agentski-frontend:
 #     image: agentski-frontend
