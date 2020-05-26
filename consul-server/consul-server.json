@@ -3,5 +3,6 @@
     "bootstrap": true,
     "client_addr": "0.0.0.0",
     "data_dir": "/consul/data",
-    "ui": true
+    "ui": true,
+    "enable_agent_tls_for_checks": true
 }

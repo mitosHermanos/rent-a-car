@@ -13,83 +13,107 @@ services:
       static-network:
         ipv4_address: 172.20.0.2
 
-#  admin-service:
-#   image: admin_service
-#    build:
-#      context: ./services/admin_service
-#      dockerfile: Dockerfile
-#    tty: true
-#    ports:
-#      - "127.0.0.1:8284:8284"
-#    networks:
-#      - static-network
-#    depends_on:
-#      - consul-server
+  nginx:
+    image: nginx:latest
+    container_name: nginx-server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "444:444"
+      - "445:445"
+      - "446:446"
+      - "447:447"
+      - "448:448"
+    volumes:
+      - /consul-certs:/etc/nginx/certs
+      - ./nginx:/etc/nginx/nginx
 
-#  ad-service:
-#    image: ad_service
-#    build:
-#      context: ./services/ad_service
-#      dockerfile: Dockerfile
-#    tty: true
-#    ports:
-#      - "127.0.0.1:8283:8283"
-#    networks:
-#      - static-network
-#    depends_on:
-#      - consul-server
+  admin-service:
+    image: admin_service
+    container_name: admin-service
+    build:
+      context: ./services/admin_service
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "127.0.0.1:8284:444"
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
 
-#  renting-service:
-#    image: renting_service
-#    build:
-#      context: ./services/renting_service
-#      dockerfile: Dockerfile
-#    tty: true
-#    ports:
-#      - "127.0.0.1:8287:8287"
-#    networks:
-#      - static-network
-#    depends_on:
-#      - consul-server
+  ad-service:
+    image: ad_service
+    container_name: ad-service
+    build:
+      context: ./services/ad_service
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "127.0.0.1:8283:443"
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
 
-#  authentication-service:
-#    image: authentication_service
-#    build:
-#      context: ./services/authentication_service
-#      dockerfile: Dockerfile
-#    tty: true
-#    ports:
-#      - "127.0.0.1:8285:8285"
-#    networks:
-#      - static-network
-#    depends_on:
-#      - consul-server
+  renting-service:
+    image: renting_service
+    container_name: renting-service
+    build:
+      context: ./services/renting_service
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "127.0.0.1:8287:447"
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
 
-#  gps-service:
-#     image: gps_service
-#     build:
-#       context: ./services/gps_service
-#       dockerfile: Dockerfile
-#     tty: true
-#     ports:
-#      - "127.0.0.1:8286:8286"
-#     networks:
-#       - static-network
-#     depends_on:
-#       - consul-server
+  authentication-service:
+    image: authentication_service
+    container_name: authentication-service
+    build:
+      context: ./services/authentication_service
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "127.0.0.1:8285:445"
+    networks:
+      - static-network
+    depends_on:
+      - consul-server
 
-#  security-service:
-#     image: security_service
-#     build:
-#       context: ./services/security_service
-#       dockerfile: Dockerfile
-#     tty: true
-#     ports:
-#      - "127.0.0.1:8288:8288"
-#     networks:
-#       - static-network
-#     depends_on:
-#       - consul-server
+  gps-service:
+     image: gps_service
+     container_name: gps-service
+     build:
+       context: ./services/gps_service
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - "127.0.0.1:8286:446"
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+
+  security-service:
+     image: security_service
+     container_name: security-service
+     build:
+       context: ./services/security_service
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - "127.0.0.1:8288:448"
+     networks:
+       - static-network
+     depends_on:
+       - consul-server
+#     environment:
+#       CONSUL_HTTP_SSL: "true"
+#       CONSUL_HTTP_ADDR: "https://127:0:0:1:8500"
 
 #  agentski-bekend:
 #     image: agentski_bekend
@@ -137,23 +161,23 @@ services:
 #  agentska-baza:
 #    restart: always
 #    image: mysql
-##	build:
-##	  context: ./agentska_baza
-##	  dockerfile: Dockerfile
+#    build:
+#      context: ./agentska_baza
+#      dockerfile: Dockerfile
 #    environment:
 #      MYSQL_DATABASE: agentski_bekend
 #      MYSQL_ROOT_PASSWORD: admin
 #      MYSQL_USER: mysql
 #      MYSQL_PASSWORD: admin
-##    volumes:
-##      - ./sql:/docker-entrypoint-initdb.d
+#    volumes:
+#      - ./sql:/docker-entrypoint-initdb.d
 #    ports:
 #      - "127.0.0.1:6033:3306"
-##    healthcheck:
-##      test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
-##      interval: 2s
-##      timeout: 20s
-##      retries: 10
+#    healthcheck:
+#      test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
+#      interval: 2s
+#      timeout: 20s
+#      retries: 10
 
 #  mysql:
 #    image: mysql:8.0.19
