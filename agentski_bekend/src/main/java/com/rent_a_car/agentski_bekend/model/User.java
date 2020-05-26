@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -60,6 +61,11 @@ public class User implements Serializable, UserDetails {
     public Collection<Role> getRole() {
         return role;
     }
+
+    public Role getRola(){
+        ArrayList rols = new ArrayList<>();
+        rols = (ArrayList) role;
+        return (Role) rols.get(0);}
 
     public void setRole(Collection<Role> role) {
         this.role = role;

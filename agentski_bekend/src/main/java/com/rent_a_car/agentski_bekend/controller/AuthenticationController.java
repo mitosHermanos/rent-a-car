@@ -1,8 +1,10 @@
 package com.rent_a_car.agentski_bekend.controller;
 
+import com.rent_a_car.agentski_bekend.model.UserTokenState;
+import com.rent_a_car.agentski_bekend.security.TokenUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.rent_a_car.agentski_bekend.model.User;
 import com.rent_a_car.agentski_bekend.security.auth.JwtAuthenticationRequest;
@@ -13,8 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.core.SecurityContext;
 
@@ -52,17 +52,33 @@ public class AuthenticationController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-//    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest){
-//
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private TokenUtils tokenUtils;
+    @PostMapping(value = "/api/login")
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest){
+
 //        final Authentication authentication = authenticationManager
 //                .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
 //                        authenticationRequest.getPassword()));
-//
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-//
-//        String jwt = tokenUtils
-//    }
+
+        UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
+                        authenticationRequest.getPassword());
+
+        final Authentication authentication = authenticationManager
+                .authenticate(upat);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+
+        String jwt = tokenUtils.generateToken(user.getEmail());
+        int expiresIn = tokenUtils.getExpiredId();
+
+        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+
+    }
 }
 
