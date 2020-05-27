@@ -1,14 +1,14 @@
 package com.rent_a_car.agentski_bekend.dto;
 
 public class UserDTO {
-    private String username;
+    private String email;
     private String password;
 
     public UserDTO() {
     }
 
-    public UserDTO(String username, String password) {
-        this.username = username;
+    public UserDTO(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -20,11 +20,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String email) {
+        this.email = email;
     }
 }

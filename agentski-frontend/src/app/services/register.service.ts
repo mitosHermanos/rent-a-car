@@ -14,16 +14,16 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegisterService {
   
-  loginUser:User;
-  url:string = 'http://localhost:8282/api/login';
+  user:User;
+  url:string = 'http://localhost:8282/api/register';
 
   constructor(private http:HttpClient) { }
 
-  onLogin(loginUser: User): Observable<User>{
+  onRegister(user: User): Observable<User>{
     console.log('sending');
-    return this.http.post<User>(this.url, loginUser, httpOptions);
+    return this.http.post<User>(this.url, user, httpOptions);
     
 
   }
