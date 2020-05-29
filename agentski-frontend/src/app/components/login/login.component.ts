@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
       console.log(data);
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('adminPage');
     },
     error =>{
         alert('Username or password incorrect');
