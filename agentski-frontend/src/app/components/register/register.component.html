@@ -49,8 +49,16 @@
                 </div>
             </form> -->
         
+            <input type="text" id="firstname" class="fadeIn second" name="firstname" placeholder="firstname" [(ngModel)]="firstname">
+            <input type="text" id="lastname" class="fadeIn second" name="lastname" placeholder="lastname" [(ngModel)]="lastname">
             <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="email">
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" [(ngModel)]="password">
+            <p>Company</p>
+            <input type="radio" id="isCompany" class="fadeIn third" name="isCompany" placeholder="isCompany" [(ngModel)]="isCompany"> 
+            <p>Agent</p>
+            <input type="radio" id="isAgent" class="fadeIn third" name="isAgent" placeholder="isAgent"  [(ngModel)]="isAgent"> 
+            <p>Customer</p>
+            <input type="radio" id="isCustomer" class="fadeIn third" name="isCustomer" placeholder="isCustomer"  [(ngModel)]="isCustomer"> 
             <!-- <input type="submit" class="fadeIn fourth" value="Log In" id="submitLogin"> -->
             <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Register</button>
     

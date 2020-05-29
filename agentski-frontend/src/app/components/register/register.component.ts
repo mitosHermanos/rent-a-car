@@ -19,8 +19,13 @@ export class RegisterComponent implements OnInit {
     loading = false;
     submitted = false;
 
+    firstname: string;
+    lastname: string;
     email:string;
     password:string;
+    isCompany: boolean;
+    isAgent: boolean;
+    isCustomer: boolean;
     user:User;
 
     constructor(
@@ -59,9 +64,15 @@ export class RegisterComponent implements OnInit {
         //     return;
         // }
 
+        console.log(this.firstname);
+        console.log(this.lastname);
         console.log(this.email);
         console.log(this.password);
-        this.user={email:this.email, password:this.password};
+        console.log(this.isCompany);
+        console.log(this.isAgent);
+        console.log(this.isCustomer);
+
+        this.user={firstname: this.firstname, lastname:this.lastname, email:this.email, password:this.password, isCompany:this.isCompany, isAgent: this.isAgent, isCustomer: this.isCustomer};
         this.loading = true;
         this.registerService.onRegister(this.user)
             .pipe(first())
