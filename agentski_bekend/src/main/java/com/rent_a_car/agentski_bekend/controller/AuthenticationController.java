@@ -1,7 +1,7 @@
 package com.rent_a_car.agentski_bekend.controller;
 
 import com.rent_a_car.agentski_bekend.dto.UserDTO;
-import com.rent_a_car.agentski_bekend.model.UserTokenState;
+//import com.rent_a_car.agentski_bekend.model.UserTokenState;
 import com.rent_a_car.agentski_bekend.security.TokenUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.rent_a_car.agentski_bekend.model.User;
