@@ -1,11 +1,10 @@
 package com.rent_a_car.agentski_bekend.controller;
 
 import com.rent_a_car.agentski_bekend.dto.UserDTO;
-//import com.rent_a_car.agentski_bekend.model.UserTokenState;
+import com.rent_a_car.agentski_bekend.model.UserTokenState;
 import com.rent_a_car.agentski_bekend.security.TokenUtils;
+import com.rent_a_car.agentski_bekend.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.rent_a_car.agentski_bekend.model.User;
-import com.rent_a_car.agentski_bekend.security.auth.JwtAuthenticationRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,26 +19,43 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.ws.rs.core.SecurityContext;
+import java.util.List;
 
 //import com.webencyclop.demo.model.User; TODO import user
 
 @RestController
 public class AuthenticationController {
 
-    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login"); // resources/template/login.html
-        return modelAndView;
+    @Autowired
+    private UserService userService;
+
+    @PostMapping(value ="/api/login")
+    public ResponseEntity<?> login(@RequestBody JwtAuthenticationRequest authenticationRequest) {
+        try{
+            User user = userService.findByEmail(authenticationRequest.getEmail());
+            if(user.getPassword().equals(authenticationRequest.getPassword())) {
+                return ResponseEntity.ok().build();
+            }
+            return ResponseEntity.status(400).build();
+
+        }catch (Exception e){
+
+            };
+        return ResponseEntity.status(400).build();
+
+
     }
 
-    @PostMapping(value = "/register")
-    public ModelAndView register(@RequestBody UserDTO dto) {
-        ModelAndView modelAndView = new ModelAndView();
-         User user = new User();
-         modelAndView.addObject("user", user);
-        modelAndView.setViewName("register"); // resources/template/register.html
-        return modelAndView;
+    @PostMapping(value = "/api/register")
+    public ResponseEntity<?> register(@RequestBody UserDTO dto) {
+        User user = new User();
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        if(!dto.getEmail().matches("[a-zA-Z0-9.']+@(gmail.com)|(yahoo.com)|(uns.ac.rs)")){
+            return ResponseEntity.status(400).build();
+        }
+        userService.save(user);
+        return ResponseEntity.ok().build();
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -60,7 +76,7 @@ public class AuthenticationController {
 
     @Autowired
     private TokenUtils tokenUtils;
-    @PostMapping(value = "/api/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest){
 
 //        final Authentication authentication = authenticationManager
@@ -81,7 +97,8 @@ public class AuthenticationController {
 //        int expiresIn = tokenUtils.getExpiredId();
 //
 //        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
-            return null;
+
+        return null;
     }
 }
 

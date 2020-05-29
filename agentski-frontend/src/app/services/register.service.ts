@@ -17,7 +17,7 @@ const httpOptions = {
 export class RegisterService {
   
   user:User;
-  url:string = 'http://localhost:8282/register';
+  url:string = 'http://localhost:8282/api/register';
 
   constructor(private http:HttpClient) { }
 

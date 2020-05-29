@@ -7,20 +7,21 @@ import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/UserService';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+ 
     registerForm: FormGroup;
     loading = false;
     submitted = false;
-    email: string;
-    pass1: string;
-    pass2: string;
-    user: User;
+
+    email:string;
+    password:string;
+    user:User;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -37,37 +38,40 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-
-            email: ['',[ Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
-
+        // this.registerForm = this.formBuilder.group({
+            
+        //     email: ['', Validators.required],
+        //     password: ['', [Validators.required, Validators.minLength(6)]]
+        // });
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        this.submitted = true;
+        //this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+      //  this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-        this.user={email: this.email, password: this.pass1};
+        // if (this.registerForm.invalid) {
+        //     return;
+        // }
+
+        console.log(this.email);
+        console.log(this.password);
+        this.user={email:this.email, password:this.password};
         this.loading = true;
         this.registerService.onRegister(this.user)
             .pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigateByUrl('');
+                    this.router.navigate(['/login']);
                 },
                 error => {
+                    alert("Invalid email");
                     this.alertService.error(error);
                     this.loading = false;
                 });

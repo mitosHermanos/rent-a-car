@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private loginService: LoginService
+        private loginService:LoginService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -37,11 +37,12 @@ export class LoginComponent implements OnInit {
         }
     }
 
+
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            email: ['',[ Validators.required, Validators.email]],
-            password: ['', Validators.required]
-        });
+          this.loginForm = this.formBuilder.group({
+              email: ['', Validators.required],
+              password: ['', Validators.required]
+          });
 
 
 
@@ -53,47 +54,51 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
 
-//   onSubmit(){
-//     console.log(this.email);
-//     console.log(this.password);
-//
-//     this.loginUser = {email: this.email, password: this.password};
-//     console.log(this.loginUser);
-//
-//     this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
-//       console.log(data);
-//     });
-//   }
+  onSubmit(){
+    console.log(this.email);
+    console.log(this.password);
 
- onSubmit() {
-        this.submitted = true;
+    this.loginUser = {email: this.email, password: this.password};
+    console.log(this.loginUser);
+
+    this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
+      console.log(data);
+      this.router.navigateByUrl('adminPage');
+    },
+    error =>{
+        alert('Username or password incorrect');
+    });
+  }
+
+// onSubmit() {
+        //this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+        //this.alertService.clear();
 
       // stop here if form is invalid
-          if (this.loginForm.invalid) {
-              return;
-          }
+         // if (this.loginForm.invalid) {
+         //     return;
+          //}
 
-          this.loading = true;
-          this.authenticationService.login(this.f.email.value, this.f.password.value)
-              .pipe(first())
-              .subscribe(
-                  data => {
-                      this.router.navigate([this.returnUrl]);
-                  },
-                  error => {
-                      this.alertService.error(error);
-                      this.loading = false;
-                  });
-      }
+        //   //this.loading = true;
+        //   this.loginUser = {email: this.email, password: this.password};
+        //  console.log(this.loginUser);
+        //   this.loginService.onLogin(this.loginUser)
+        //       .pipe(first())
+        //       .subscribe(
+        //           data => {
+        //               this.router.navigate([this.returnUrl]);
+        //           },
+        //           error => {
+        //               this.alertService.error(error);
+        //               this.loading = false;
+        //           });
+      //}
 
 
-gotoRegister(){
-    console.log("register*******");
-    this.router.navigateByUrl('register');  // define your component where you want to go
-}
-
+  gotoRegister(){
+      this.router.navigate(['/register']);  // define your component where you want to go
+  }
 
 }

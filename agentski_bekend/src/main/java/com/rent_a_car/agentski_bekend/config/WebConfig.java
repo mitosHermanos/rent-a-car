@@ -14,10 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-
-
-public  abstract class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
-
+public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -39,9 +36,6 @@ public  abstract class WebConfig extends WebSecurityConfigurerAdapter implements
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("PUT", "DELETE", "GET", "POST");
     }
-
-
-
 
 //    @Bean   // ili druga verzija
 //    public BCryptPasswordEncoder passwordEncoder() {
@@ -94,12 +88,12 @@ public  abstract class WebConfig extends WebSecurityConfigurerAdapter implements
 //        return bean;
 //    }
 //
-//    @Bean
+//  /*  @Bean
 //    @Override
 //    public AuthenticationManager authenticationManagerBean() throws Exception{
 //        return super.authenticationManagerBean();
 //    }
-//
+//*/
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
 //        registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("PUT", "DELETE", "GET", "POST");
