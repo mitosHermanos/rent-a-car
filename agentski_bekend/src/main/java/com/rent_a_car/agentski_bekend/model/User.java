@@ -38,17 +38,6 @@ public class User implements Serializable, UserDetails {
     @Column(name="password", nullable = false, unique = true)
     private String password;
 
-    @NotNull
-    @Column(name="isCompany")
-    private boolean isCompany = false;
-
-    @NotNull
-    @Column(name="isAgent")
-    private boolean isAgent = false;
-
-    @NotNull
-    @Column(name="isCustomer")
-    private boolean isCustomer = false;
 
     public String getFirstname() {
         return firstname;
@@ -66,29 +55,6 @@ public class User implements Serializable, UserDetails {
         this.lastname = lastname;
     }
 
-    public boolean isCompany() {
-        return isCompany;
-    }
-
-    public void setCompany(boolean company) {
-        isCompany = company;
-    }
-
-    public boolean isAgent() {
-        return isAgent;
-    }
-
-    public void setAgent(boolean agent) {
-        isAgent = agent;
-    }
-
-    public boolean isCustomer() {
-        return isCustomer;
-    }
-
-    public void setCustomer(boolean customer) {
-        isCustomer = customer;
-    }
 
     @ManyToMany
     @JoinTable(

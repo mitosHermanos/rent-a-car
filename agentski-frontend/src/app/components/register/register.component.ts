@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserRequest } from 'src/app/models/UserRequest';
 import { UserService } from 'src/app/services/UserService';
+
 
 @Component({
   selector: 'app-register',
@@ -23,10 +25,9 @@ export class RegisterComponent implements OnInit {
     lastname: string;
     email:string;
     password:string;
-    isCompany: boolean;
-    isAgent: boolean;
-    isCustomer: boolean;
-    user:User;
+  
+    isSelected: string;
+    user:UserRequest;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -64,16 +65,21 @@ export class RegisterComponent implements OnInit {
         //     return;
         // }
 
-        console.log(this.firstname);
-        console.log(this.lastname);
-        console.log(this.email);
-        console.log(this.password);
-        console.log(this.isCompany);
-        console.log(this.isAgent);
-        console.log(this.isCustomer);
+          
 
-        this.user={firstname: this.firstname, lastname:this.lastname, email:this.email, password:this.password, isCompany:this.isCompany, isAgent: this.isAgent, isCustomer: this.isCustomer};
+            
+        
+
+        this.user={firstname: this.firstname, lastname:this.lastname, email:this.email, password:this.password, isSelected: this.isSelected};
+        
+        console.log(this.user.firstname);
+        console.log(this.user.lastname);
+        console.log(this.user.email);
+        console.log(this.user.password);
+        console.log(this.user.isSelected);
+        
         this.loading = true;
+
         this.registerService.onRegister(this.user)
             .pipe(first())
             .subscribe(
@@ -87,4 +93,5 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
     }
+   
 }

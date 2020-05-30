@@ -30,6 +30,7 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+    @Autowired
     private UserRequestServiceInterface userRequestService;
 
     @PostMapping(value ="/api/login")
@@ -50,14 +51,27 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/api/register")
-    public ResponseEntity<?> register(@RequestBody UserRequest dto) {
-    //    User user = new User();
-     //   user.setEmail(dto.getEmail());
-    //    user.setPassword(dto.getPassword());
+    public ResponseEntity<?> register(@RequestBody UserDTO dto) {
+        UserRequest user = new UserRequest();
+        user.setFirstname(dto.getFirstname());
+        user.setLastname(dto.getLastname());
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+
+          if(dto.getIsSelected().equals("isCompany")) {
+              user.setCompany(true);
+          }
+          else if(dto.getIsSelected().equals("isAgent")) {
+              user.setAgent(true);
+          }
+          else if(dto.getIsSelected().equals("isCustomer")) {
+              user.setCustomer(true);
+          }
+
         if(!dto.getEmail().matches("[a-zA-Z0-9.']+@(gmail.com)|(yahoo.com)|(uns.ac.rs)")){
             return ResponseEntity.status(400).build();
         }
-        userRequestService.save(dto);
+        userRequestService.save(user);
         return ResponseEntity.ok().build();
     }
 

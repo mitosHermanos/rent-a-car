@@ -39,15 +39,15 @@ public class UserRequest implements Serializable, UserDetails {
 
     @NotNull
     @Column(name="isCompany")
-    private boolean isCompany = false;
+    private boolean isCompany ;
 
     @NotNull
     @Column(name="isAgent")
-    private boolean isAgent = false;
+    private boolean isAgent;
 
     @NotNull
     @Column(name="isCustomer")
-    private boolean isCustomer = false;
+    private boolean isCustomer ;
 
     public String getFirstname() {
         return firstname;
@@ -89,22 +89,9 @@ public class UserRequest implements Serializable, UserDetails {
         isCustomer = customer;
     }
 
-    public Collection<Role> getRole() {
-        return role;
-    }
 
-    public void setRole(Collection<Role> role) {
-        this.role = role;
-    }
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> role;
+
 
 
     public UserRequest() {
