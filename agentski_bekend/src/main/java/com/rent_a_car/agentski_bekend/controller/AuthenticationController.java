@@ -18,7 +18,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
 //import com.webencyclop.demo.model.User; TODO import user
@@ -65,8 +69,8 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -79,26 +83,46 @@ public class AuthenticationController {
     @PostMapping(value = "/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest){
 
-//        final Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
-//                        authenticationRequest.getPassword()));
+        final Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
+                        authenticationRequest.getPassword()));
 
-        UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
-                        authenticationRequest.getPassword());
+//        UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
+//                        authenticationRequest.getPassword());
 
 //        final Authentication authentication = authenticationManager
 //                .authenticate(upat);
-//
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-//
-//        String jwt = tokenUtils.generateToken(user.getEmail());
-//        int expiresIn = tokenUtils.getExpiredId();
-//
-//        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
 
-        return null;
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        User user = (User)customUserDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+
+        String jwt = tokenUtils.generateToken(user.getEmail());
+        int expiresIn = tokenUtils.getExpiredId();
+
+        return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+
+    }
+
+    @RequestMapping(value = "/role", method = RequestMethod.GET)
+    public ResponseEntity<?> getRole(Principal p){
+
+        User user = userService.findByEmail(p.getName());
+
+        Collection<?> auth = user.getAuthorities();
+
+        if(auth.size() == 0){
+            return ResponseEntity.status(500).build();
+        }
+
+        return ResponseEntity.ok(auth);
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ResponseEntity<?> logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+
+        return ResponseEntity.ok().build();
     }
 }
 

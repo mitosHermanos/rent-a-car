@@ -100,11 +100,15 @@ public class TokenUtils {
         return email;
     }
 
-//    public Boolean canTokenBeRefreshed(String token, Date lastPasswordReset) {
-//        final Date created = this.getIssuedAtDateFromToken(token);
-//        return (!(this.isCreatedBeforeLastPasswordReset(created, lastPasswordReset))
-//                && (!(this.isTokenExpired(token)) || this.ignoreTokenExpiration(token)));
-//    }
+    public Boolean canTokenBeRefreshed(String token, Date lastPasswordReset) {
+        final Date created = this.getIssuedAtDateFromToken(token);
+        return (!(this.isCreatedBeforeLastPasswordReset(created, lastPasswordReset))
+                && (!(this.isTokenExpired(token)) || this.ignoreTokenExpiration(token)));
+    }
+
+    private Boolean isCreatedBeforeLastPasswordReset(Date created, Date lastPasswordReset) {
+        return (lastPasswordReset != null && created.before(lastPasswordReset));
+    }
 
     private Claims getAllClaimsFromToken(String token) {
         Claims claims;
@@ -124,8 +128,8 @@ public class TokenUtils {
         final String username = getEmailFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
 
-        return (username != null && username.equals(user.getUsername())
-                /*&& !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate())*/);
+        return (username != null && username.equals(user.getUsername()) && true);
+                //&& !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate());
 
     }
 
@@ -140,13 +144,35 @@ public class TokenUtils {
         return issueAt;
     }
 
-//    private Boolean ignoreTokenExpiration(String token) {
-//        String audience = this.getAudienceFromToken(token);
-//        return (audience.equals(AUDIENCE_TABLET) || audience.equals(AUDIENCE_MOBILE));
-//    }
-//
-//    private Boolean isTokenExpired(String token) {
-//        final Date expiration = this.getExpirationDateFromToken(token);
-//        return expiration.before(timeProvider.now());
-//    }
+    public Date getExpirationDateFromToken(String token) {
+        Date expiration;
+        try {
+            final Claims claims = this.getAllClaimsFromToken(token);
+            expiration = claims.getExpiration();
+        } catch (Exception e) {
+            expiration = null;
+        }
+        return expiration;
+    }
+
+    public String getAudienceFromToken(String token) {
+        String audience;
+        try {
+            final Claims claims = this.getAllClaimsFromToken(token);
+            audience = claims.getAudience();
+        } catch (Exception e) {
+            audience = null;
+        }
+        return audience;
+    }
+
+    private Boolean ignoreTokenExpiration(String token) {
+        String audience = this.getAudienceFromToken(token);
+        return (audience.equals(AUDIENCE_TABLET) || audience.equals(AUDIENCE_MOBILE));
+    }
+
+    private Boolean isTokenExpired(String token) {
+        final Date expiration = this.getExpirationDateFromToken(token);
+        return expiration.before(timeProvider.now());
+    }
 }

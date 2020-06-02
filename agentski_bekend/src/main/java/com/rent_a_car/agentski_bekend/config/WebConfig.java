@@ -62,7 +62,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
                 // svim korisnicima dopusti da pristupe putanjama /auth/login, /auth/register, /activate
-                .authorizeRequests().antMatchers("/auth/login", "/auth/register", "/clinicalCenterAdministrator/activate/**", "/checkup/declineUpdatedAppointment/**", "/checkup/acceptUpdatedAppointment/**").permitAll()
+                .authorizeRequests().antMatchers("/**").permitAll()
 
                 // svaki zahtev mora biti autorizovan
                 .anyRequest().authenticated().and()
