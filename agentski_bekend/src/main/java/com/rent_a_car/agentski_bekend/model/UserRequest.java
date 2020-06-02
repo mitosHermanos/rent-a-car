@@ -8,14 +8,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "user_request_table")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class User implements Serializable, UserDetails {
-
+public class UserRequest implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="user_id", nullable=false, unique=true)
@@ -28,16 +26,28 @@ public class User implements Serializable, UserDetails {
     @NotNull
     @Column(name="lastname", nullable = false, unique = true)
     private String lastname;
+
     @NotNull
     @Email    // hybernate validator
     @Column(name="email", nullable = false, unique = true)
     private String email;
 
     @NotNull
-    @Size(min = 5, max = 15)
+    @Size(min = 10, max = 16)
     @Column(name="password", nullable = false, unique = true)
     private String password;
 
+    @NotNull
+    @Column(name="isCompany")
+    private boolean isCompany ;
+
+    @NotNull
+    @Column(name="isAgent")
+    private boolean isAgent;
+
+    @NotNull
+    @Column(name="isCustomer")
+    private boolean isCustomer ;
 
     public String getFirstname() {
         return firstname;
@@ -55,18 +65,36 @@ public class User implements Serializable, UserDetails {
         this.lastname = lastname;
     }
 
+    public boolean isCompany() {
+        return isCompany;
+    }
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> role;
+    public void setCompany(boolean company) {
+        isCompany = company;
+    }
+
+    public boolean isAgent() {
+        return isAgent;
+    }
+
+    public void setAgent(boolean agent) {
+        isAgent = agent;
+    }
+
+    public boolean isCustomer() {
+        return isCustomer;
+    }
+
+    public void setCustomer(boolean customer) {
+        isCustomer = customer;
+    }
 
 
-    public User() {
+
+
+
+
+    public UserRequest() {
     }
 
     public Integer getId() {
@@ -89,53 +117,38 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
-
-    public Collection<Role> getRole() {
-        return role;
-    }
-
-    public Role getRola(){
-        ArrayList rols = new ArrayList<>();
-        rols = (ArrayList) role;
-        return (Role) rols.get(0);}
-
-    public void setRole(Collection<Role> role) {
-        this.role = role;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.role;
+        return null;
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return null;
     }
 
     @Override
     public String getUsername() {
-        return this.email;
+        return null;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return false;
     }
-
 }
