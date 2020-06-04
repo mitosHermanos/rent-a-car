@@ -29,6 +29,29 @@
                 </div>
             </div>
         </nav>
+
+        <button id="button" (click)="newCarModel()">Add car model</button>
+        <button id="button1" (click)="allCarModels()">All car models</button>
+        <ng-container *ngIf="show13">
+          <div id="cModel">
+              <p>Enter car model name: </p>
+              <input type="text" id="nameCM" name="nameCM" [(ngModel)]="nameCM"><p></p>
+            Select car class:
+            <select [(ngModel)]="caarc">
+              <option [ngValue]="caarc" *ngFor="let caarc of carClass" (click)="selectedCarClass(caarc)">{{caarc.name}} </option>
+            </select><p></p>
+            Select transmission type:
+            <select [(ngModel)]="trrans">
+              <option [ngValue]="trrans" *ngFor="let trrans of transmissionType" (click)="selectedTransmission(trrans)">{{trrans.name}}</option>
+            </select><p></p>
+            Select manufacturer:
+            <select [(ngModel)]="maanu">
+              <option [ngValue]="maanu" *ngFor="let maanu of manufacturer" (click)="selectedManufacturer(maanu)">{{maanu.name}}</option>
+            </select><p></p>
+            <button (click)="addCM()">Submit</button>
+          </div>
+        </ng-container>
+
         <ng-container *ngIf="show1">
         <div id="manufac">
             <p>Enter manufacturer name: </p>
@@ -58,22 +81,6 @@
           </div>
           </ng-container>
         
-        <!-- <ng-container *ngIf="show4">
-            <ul *ngFor="let manufac of manufacturer">
-                <li>{{ manufac.name }}</li>
-            </ul>
-        </ng-container>
-        <ng-container *ngIf="show5">
-            <ul *ngFor="let carc of carClass">
-                <li>{{ carc.name }}</li>
-            </ul>
-        </ng-container>
-        <ng-container *ngIf="show6">
-            <ul *ngFor="let transmis of transmissionType">
-                <li>{{ transmis.name }}</li>
-            </ul>
-        </ng-container> -->
-
         <ng-container *ngIf="show4">
             <table>
                 <thead>
@@ -150,6 +157,25 @@
                </tbody>
              </table>
        </ng-container>
+       <ng-container *ngIf="show14">
+        <table>
+             <thead>
+               <tr>           
+                 <th>Name</th>
+                 <th>Status</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor="let model of carModels">           
+                 <td>{{ model.name }}</td>
+                 <td *ngIf="!model.deleted">Active</td>
+                 <td *ngIf="model.deleted">Deleted</td>
+                 <td><button (click)="deleteCarModel(model.name)">Delete</button></td>
+                 <td><button (click)="updateCarModel(model.name)">Update</button></td>
+             </tr>
+             </tbody>
+           </table>
+     </ng-container>
 
 
         <ng-container *ngIf="show7">
@@ -192,6 +218,18 @@
                 <button (click)="updateFT()">Submit</button>
             </div>
             </ng-container>
+            <ng-container *ngIf="show15">
+              <div id="carMod">
+                  <p>Update car model name: </p>
+                  <input type="text" id="nameCMU" name="nameCMU" [(ngModel)]="nameCM">
+                  <p></p>
+                  Activate<input type="checkbox" id="actCM" name="actCM" [(ngModel)]="actCM">
+                  <p></p>
+
+                  
+                  <button (click)="updateCM()">Submit</button>
+              </div>
+              </ng-container>
 
 
     </body>

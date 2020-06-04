@@ -6,6 +6,7 @@ import {CarClass} from '../models/CarClass';
 import {Manufacturer} from '../models/Manufacturer';
 import {TransmissionType} from '../models/TransmissionType';
 import {FuelType} from '../models/FuelType';
+import {CarModels} from '../models/CarModels';
 
 
 const httpOptions = {
@@ -40,13 +41,24 @@ export class AdminService {
   url12:string = 'http://localhost:8282/admin/updateTransmissionType';
   url15:string = 'http://localhost:8282/admin/updateFuelType'
 
+  url17:string = 'http://localhost:8282/admin/addCarModel';
+  url18:string = 'http://localhost:8282/admin/getCarModels';
+  url19:string = 'http://localhost:8282/admin/deleteCarModel';
+  url20:string = 'http://localhost:8282/admin/updateCarModel';
+
   carClass:CarClass;
   manufact:Manufacturer;
   transmission:TransmissionType;
   fuelType:FuelType;
+  carModel:CarModels;
 
 
   constructor(private http:HttpClient) { }
+
+  addCM(name:string, caarc:string, trrans:string, maanu:string):Observable<CarModels>{
+    this.carModel={name:name, carClass:caarc, transmission:trrans, manufacturer:maanu, deleted:false};
+    return this.http.post<CarModels>(this.url17, this.carModel, httpOptions);
+  }
 
   addM(name: string): Observable<string>{
     console.log('sending');
@@ -92,6 +104,12 @@ export class AdminService {
     return this.http.post<string>(this.url15+'/'+old, this.fuelType, httpOptions);
   }
 
+  updateCarModel(old: string, name:string, deleted:boolean): Observable<string>{
+    console.log('sending');
+    this.carModel = {name:name, deleted:deleted,  manufacturer:'', carClass:'', transmission:''}
+    return this.http.post<string>(this.url20+'/'+old, this.carModel, httpOptions);
+  }
+
   getManufac():Observable<Manufacturer[]>{
     return this.http.get<Manufacturer[]>(this.url4);
   }
@@ -108,12 +126,20 @@ export class AdminService {
     return this.http.get<CarClass[]>(this.url5);
   }
 
+  getCarModels():Observable<CarModels[]>{
+    return this.http.get<CarModels[]>(this.url18);
+  }
+
   deleteManufacturer(name:string): Observable<string>{
     return this.http.post<string>(this.url7, name, httpOptions);
   }
 
   deleteCarClass(name:string): Observable<string>{
     return this.http.post<string>(this.url8, name, httpOptions);
+  }
+
+  deleteCarModel(name:string): Observable<string>{
+    return this.http.post<string>(this.url19, name, httpOptions);
   }
 
   deleteTransmissionType(name:string): Observable<string>{

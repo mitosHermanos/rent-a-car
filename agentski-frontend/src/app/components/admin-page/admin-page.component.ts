@@ -5,6 +5,7 @@ import {CarClass} from '../../models/CarClass';
 import {Manufacturer} from '../../models/Manufacturer';
 import {TransmissionType} from '../../models/TransmissionType';
 import {FuelType} from '../../models/FuelType';
+import {CarModels} from '../../models/CarModels';
 
 
 @Component({
@@ -22,10 +23,18 @@ export class AdminPageComponent implements OnInit {
   nameCCU:string;
   nameTTU:string;
   nameFTU:string;
+
+  maanu:Manufacturer;
+  trrans:TransmissionType;
+  caarc:CarClass;
+  nameCM:string;
+  nameCMU:string;
+
   actMan:boolean;
   actCC:boolean;
   actTT:boolean;
   actFT:boolean;
+  actCM:boolean;
   show1:boolean=false;
   show2:boolean=false;
   show3:boolean=false;
@@ -38,16 +47,57 @@ export class AdminPageComponent implements OnInit {
   show10:boolean=false;
   show11:boolean=false;
   show12:boolean=false;
+  show13:boolean=false;
+  show14:boolean=false;
+  show15:boolean=false;
 
   manufacturer:Manufacturer[];
   transmissionType:TransmissionType[];
   carClass:CarClass[];
   fuelType:FuelType[];
+  carModels:CarModels[];
 
   constructor(
     private adminService:AdminService
 
   ) { 
+  }
+
+  selectedCarClass(name:CarClass){
+    this.caarc = name;
+    console.log('carclass');
+  }
+
+  selectedTransmission(name:TransmissionType){
+    this.trrans = name;
+  }
+
+  selectedManufacturer(name:Manufacturer){
+    this.maanu = name;
+  }
+
+  addCM(){
+    console.log(this.caarc.name);
+    console.log(this.trrans.name);
+    console.log(this.maanu.name);
+    this.adminService.addCM(this.nameCM, this.caarc.name, this.trrans.name, this.maanu.name).subscribe((data:string)=>{
+      console.log(data);
+    });
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
   
   ngOnInit(): void {
@@ -62,6 +112,9 @@ export class AdminPageComponent implements OnInit {
     });
     this.adminService.getFuelT().subscribe(data =>{
       this.fuelType = data;
+    });
+    this.adminService.getCarModels().subscribe(data =>{
+      this.carModels = data;
     });
   }
 
@@ -78,6 +131,60 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
+  }
+
+  newCarModel(){
+    this.adminService.getManufac().subscribe(data =>{
+      this.manufacturer = data;
+    });
+    this.adminService.getTransmis().subscribe(data =>{
+      this.transmissionType = data;
+    });
+    this.adminService.getCarC().subscribe(data =>{
+      this.carClass = data;
+    });
+    this.adminService.getFuelT().subscribe(data =>{
+      this.fuelType = data;
+    });
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = !this.show13;
+    this.show14 = false;
+    this.show15 = false;
+  }
+
+  allCarModels(){
+    this.adminService.getCarModels().subscribe(data =>{
+      this.carModels = data;
+    });
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = false;
+    this.show14 = !this.show14;
+    this.show15 = false;
   }
 
   newFuelType(){
@@ -93,6 +200,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = !this.show10;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   newManufac(){
@@ -108,6 +218,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   newCarC(){
@@ -123,6 +236,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   newTransmis(){
@@ -138,6 +254,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   showManufac(){
@@ -156,6 +275,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   showCarC(){
@@ -174,6 +296,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   showTransmis(){
@@ -192,6 +317,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   showFuelType(){
@@ -210,6 +338,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = !this.show11;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   addM(){
@@ -232,6 +363,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   addCC(){
@@ -254,6 +388,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   addTT(){
@@ -276,6 +413,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   addFT(){
@@ -298,6 +438,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   deleteManufacturer(name: string){
@@ -316,6 +459,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateManufacturer(name:string){
@@ -333,6 +479,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   deleteCarClass(name:string){
@@ -351,6 +500,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateCarClass(name:string){
@@ -368,6 +520,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   deleteTransmissionType(name:string){
@@ -386,6 +541,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateTransmissionType(name:string){
@@ -403,6 +561,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   deleteFuelType(name:string){
@@ -421,6 +582,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateFuelType(name:string){
@@ -438,6 +602,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = !this.show12;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateM(){
@@ -456,6 +623,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateCC(){
@@ -474,6 +644,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateTT(){
@@ -492,6 +665,9 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
   }
 
   updateFT(){
@@ -510,5 +686,70 @@ export class AdminPageComponent implements OnInit {
     this.show10 = false;
     this.show11 = false;
     this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
+  }
+
+  updateCM(){
+    this.adminService.updateCarModel(this.nameCMU, this.nameCM, this.actCM).subscribe((data:string)=>{
+      console.log(data);
+    })
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
+  }
+
+  deleteCarModel(name:string){
+    this.adminService.deleteCarModel(name).subscribe((data:string)=>{
+      console.log(data);
+    }),
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = false;
+  }
+
+  updateCarModel(name:string){
+    this.nameCM = name;
+    this.nameCMU = name;
+    this.show1 = false;
+    this.show2 = false;
+    this.show3 = false;
+    this.show4 = false;
+    this.show5 = false;
+    this.show6 = false;
+    this.show7 = false;
+    this.show8 = false;
+    this.show9 = false;
+    this.show10 = false;
+    this.show11 = false;
+    this.show12 = false;
+    this.show13 = false;
+    this.show14 = false;
+    this.show15 = !this.show15;
   }
 }
