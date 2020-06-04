@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User';
 import { config } from 'process';
-import { UserRequest } from '../models/UserRequest';
+//import { UserRequest } from '../models/UserRequest';
 
 
 @Injectable({ providedIn: 'root' })

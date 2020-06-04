@@ -61,9 +61,10 @@ export class LoginComponent implements OnInit {
     this.loginUser = {email: this.email, password: this.password};
     console.log(this.loginUser);
 
-    this.loginService.onLogin(this.loginUser).subscribe((data:LoginUser)=>{
+    this.loginService.onLogin(this.loginUser).subscribe((data)=>{
       console.log(data);
-      this.router.navigateByUrl('home');
+      //localStorage.setItem('token', data.email)
+      this.router.navigateByUrl('adminPage');
     },
     error =>{
         alert('Username or password incorrect');

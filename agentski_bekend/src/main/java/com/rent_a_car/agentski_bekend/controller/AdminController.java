@@ -1,16 +1,7 @@
 package com.rent_a_car.agentski_bekend.controller;
-import com.rent_a_car.agentski_bekend.dto.CarClassDTO;
-import com.rent_a_car.agentski_bekend.dto.FuelTypeDTO;
-import com.rent_a_car.agentski_bekend.dto.ManufacturerDTO;
-import com.rent_a_car.agentski_bekend.dto.TransmissionDTO;
-import com.rent_a_car.agentski_bekend.model.CarClass;
-import com.rent_a_car.agentski_bekend.model.FuelType;
-import com.rent_a_car.agentski_bekend.model.Manufacturer;
-import com.rent_a_car.agentski_bekend.model.TransmissionType;
-import com.rent_a_car.agentski_bekend.service.interfaces.CarClassServiceInterface;
-import com.rent_a_car.agentski_bekend.service.interfaces.FuelTypeServiceInterface;
-import com.rent_a_car.agentski_bekend.service.interfaces.ManufacturerServiceInterface;
-import com.rent_a_car.agentski_bekend.service.interfaces.TransmissionTypeServiceInterface;
+import com.rent_a_car.agentski_bekend.dto.*;
+import com.rent_a_car.agentski_bekend.model.*;
+import com.rent_a_car.agentski_bekend.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +24,9 @@ public class AdminController {
     @Autowired
     private FuelTypeServiceInterface fuelTypeService;
 
+    @Autowired
+    private CarModelsServiceInterface carModelsService;
+
     @PostMapping(value="/admin/addCarC")
     public ResponseEntity<?> addCarClass(@RequestBody String name){
         try{
@@ -40,6 +34,26 @@ public class AdminController {
             cc.setName(name);
             cc.setDeleted(false);
             carClassService.save(cc);
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+
+        }
+        return ResponseEntity.status(400).build();
+    }
+
+    @PostMapping(value="/admin/addCarModel")
+    public ResponseEntity<?> addCarModels(@RequestBody CarModelsDTO dto){
+        try{
+            CarModels cm = new CarModels();
+            cm.setName(dto.getName());
+            Manufacturer m = manufacturerService.findByName(dto.getManufacturer());
+            cm.setManufacturer(m);
+            CarClass cc = carClassService.findByName(dto.getCarClass());
+            cm.setCarClass(cc);
+            TransmissionType tt = transmissionTypeService.findByName(dto.getTransmission());
+            cm.setTransmission(tt);
+            cm.setDeleted(false);
+            carModelsService.save(cm);
             return ResponseEntity.ok().build();
         }catch (Exception e){
 
@@ -107,6 +121,26 @@ public class AdminController {
         return dto;
     }
 
+    @GetMapping(value="/admin/getCarModels")
+    public List<CarModelsDTO> getCarModels(){
+
+        List<CarModels> cm = carModelsService.findAll();
+
+        List<CarModelsDTO> dto = new ArrayList<>();
+
+        for(CarModels c : cm){
+            CarModelsDTO m = new CarModelsDTO();
+            m.setName(c.getName());
+            m.setCarClass(c.getCarClass().getName());
+            m.setManufacturer(c.getManufacturer().getName());
+            m.setTransmission(c.getTransmission().getName());
+            m.setDeleted(c.isDeleted());
+            dto.add(m);
+        }
+
+        return dto;
+    }
+
     @GetMapping(value="/admin/getFuelTypes")
     public List<FuelTypeDTO> getAllFuelTypes(){
 
@@ -168,6 +202,16 @@ public class AdminController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping(value="/admin/deleteCarModel")
+    public ResponseEntity<?> deleteCarModel(@RequestBody String name){
+
+        CarModels man = carModelsService.findByName(name);
+        man.setDeleted(true);
+        carModelsService.save(man);
+
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping(value="/admin/deleteFuelType")
     public ResponseEntity<?> deleteFuelType(@RequestBody String name){
 
@@ -207,6 +251,18 @@ public class AdminController {
             man.setDeleted(false);
 
         manufacturerService.save(man);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value="/admin/updateCarModel/{old}")
+    public ResponseEntity<?> updateCarModel(@PathVariable("old") String old, @RequestBody CarModelsDTO dto){
+
+        CarModels man = carModelsService.findByName(old);
+        man.setName(dto.getName());
+        if(dto.isDeleted())
+            man.setDeleted(false);
+
+        carModelsService.save(man);
         return ResponseEntity.ok().build();
     }
 

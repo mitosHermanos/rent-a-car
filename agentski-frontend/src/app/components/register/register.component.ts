@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { UserRequest } from 'src/app/models/UserRequest';
+import { UserRequest } from '../../models/UserRequest';
 import { UserService } from 'src/app/services/UserService';
 
 

@@ -3,14 +3,14 @@ services:
 
   eureka:
     build: ./eureka
-    container name: eureka
+#    container name: eureka
     ports:
      - "8761:8761"
     tty: true
 
   zuul:
     build: ./zuul
-    container name: zuul
+#    container name: zuul
     ports:
     - "8083:8083"
     environment:
@@ -137,24 +137,23 @@ services:
       - eureka
 
 
-  agentski-bekend:
-     image: agentski_bekend
-     build:
-       context: ./agentski_bekend
-       dockerfile: Dockerfile
-     tty: true
-     ports:
-      - "127.0.0.1:8282:8282"
-     networks:
-       - static-network
-     depends_on:
-       - consul-server
-       - agentska-baza
-     environment:
-       DATABASE_USERMANE: root
-       DATABASE_PASSWORD: admin
-       DATABASE_DOMAIN: mysql
-       DATABASE_PORT: "127.0.0.1:3306"
+#  agentski-bekend:
+#     image: agentski_bekend
+#     build:
+#       context: ./agentski_bekend
+#       dockerfile: Dockerfile
+#     tty: true
+#     ports:
+#      - "127.0.0.1:8282:8282"
+#     networks:
+#       - static-network
+#     depends_on:
+#       - agentska-baza
+#     environment:
+#       DATABASE_USERMANE: root
+#       DATABASE_PASSWORD: admin
+#       DATABASE_DOMAIN: mysql
+#       DATABASE_PORT: "127.0.0.1:3306"
 
 
 
