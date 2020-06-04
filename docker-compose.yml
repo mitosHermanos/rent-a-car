@@ -3,19 +3,23 @@ services:
 
   eureka:
     build: ./eureka
-    container name: eureka
+    container_name: eureka
     ports:
      - "8761:8761"
     tty: true
+    networks:
+     - static-network
 
   zuul:
     build: ./zuul
-    container name: zuul
+    container_name: zuul
     ports:
     - "8083:8083"
     environment:
-      - REGISTRY_HOST=eureka-serviceregistry
+      - REGISTRY_HOST=eureka
     tty: true
+    networks:
+      - static-network
     depends_on:
       - eureka
       - ad-service
@@ -25,20 +29,20 @@ services:
       - security-service
       - renting-service
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx-server
-    ports:
-      - "80:80"
-      - "443:443"
-      - "444:444"
-      - "445:445"
-      - "446:446"
-      - "447:447"
-      - "448:448"
-    volumes:
-      - /consul-certs:/etc/nginx/certs
-      - ./nginx:/etc/nginx/nginx
+#  nginx:
+#    image: nginx:latest
+#    container_name: nginx-server
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "444:444"
+#      - "445:445"
+#      - "446:446"
+#      - "447:447"
+#      - "448:448"
+#    volumes:
+#      - /consul-certs:/etc/nginx/certs
+#      - ./nginx:/etc/nginx/nginx
 
   admin-service:
     image: admin_service
@@ -50,7 +54,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "8284:444"
+      - "8284:8284"
     networks:
       - static-network
     depends_on:
@@ -66,7 +70,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "8283:443"
+      - "8283:8283"
     networks:
       - static-network
     depends_on:
@@ -82,7 +86,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "8287:447"
+      - "8287:8287"
     networks:
       - static-network
     depends_on:
@@ -98,7 +102,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "8285:445"
+      - "8285:8285"
     networks:
       - static-network
     depends_on:
@@ -114,7 +118,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8286:446"
+      - "8286:8286"
     networks:
       - static-network
     depends_on:
@@ -130,7 +134,7 @@ services:
     environment:
       - REGISTRY_HOST=eureka
     ports:
-      - "127.0.0.1:8288:448"
+      - "8288:8288"
     networks:
       - static-network
     depends_on:
@@ -139,22 +143,24 @@ services:
 
   agentski-bekend:
      image: agentski_bekend
+     container_name: agentski-bekend
      build:
        context: ./agentski_bekend
        dockerfile: Dockerfile
      tty: true
      ports:
-      - "127.0.0.1:8282:8282"
+      - "8282:8282"
      networks:
        - static-network
      depends_on:
-       - consul-server
-       - agentska-baza
+       - eureka
+#       - agentska-baza
      environment:
-       DATABASE_USERMANE: root
-       DATABASE_PASSWORD: admin
-       DATABASE_DOMAIN: mysql
-       DATABASE_PORT: "127.0.0.1:3306"
+       - REGISTRY_HOST=eureka
+#       DATABASE_USERMANE: root
+#       DATABASE_PASSWORD: admin
+#       DATABASE_DOMAIN: mysql
+#       DATABASE_PORT: "127.0.0.1:3306"
 
 
 
