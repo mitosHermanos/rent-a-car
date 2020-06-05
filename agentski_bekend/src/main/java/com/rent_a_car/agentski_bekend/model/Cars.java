@@ -2,6 +2,7 @@ package com.rent_a_car.agentski_bekend.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Table(name="cars_table")
@@ -39,19 +40,49 @@ public class Cars {
     @Column(name="name", nullable=false)
     private String name;
 
-//    @JoinTable(
-//            name = "confirmed_req",
-//            joinColumns = @JoinColumn(
-//                    name = "cars_id", referencedColumnName = "cars_id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "role_id", referencedColumnName = "id"))
-//    private Collection<Role> role;
-
     @Column
     private boolean deleted;
 
     @Column
     private boolean hasAndroid = false;
+
+    @Column
+    private Date startDate;
+
+    @Column
+    private Date endDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isHasAndroid() {
+        return hasAndroid;
+    }
+
+    public void setHasAndroid(boolean hasAndroid) {
+        this.hasAndroid = hasAndroid;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
     public Cars() {
     }
