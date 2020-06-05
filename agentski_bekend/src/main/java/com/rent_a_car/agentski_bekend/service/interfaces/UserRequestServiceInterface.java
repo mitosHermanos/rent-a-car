@@ -10,4 +10,5 @@ public interface UserRequestServiceInterface {
 
     public UserRequest save(UserRequest user);
     public List<UserRequest> findAll();
+    public void delete(UserRequest userRequest);
 }

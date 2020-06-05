@@ -34,4 +34,9 @@ public class UserRequestService  implements UserRequestServiceInterface {
         List<UserRequest> result = userRequestRepository.findAll();
         return result;
     }
+
+    @Override
+    public void delete(UserRequest userRequest) {
+        userRequestRepository.delete(userRequest);
+    }
 }
