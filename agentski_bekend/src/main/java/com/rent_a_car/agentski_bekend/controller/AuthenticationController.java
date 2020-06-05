@@ -44,12 +44,12 @@ public class AuthenticationController {
             if(user.getPassword().equals(authenticationRequest.getPassword())) {
                 return ResponseEntity.ok().build();
             }
-            return ResponseEntity.status(400).build();
+            return ResponseEntity.status(401).build();
 
         }catch (Exception e){
 
             };
-        return ResponseEntity.status(400).build();
+        return ResponseEntity.status(401).build();
 
 
     }

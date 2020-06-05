@@ -80,9 +80,9 @@ export class AdminPageComponent implements OnInit {
     console.log(this.caarc.name);
     console.log(this.trrans.name);
     console.log(this.maanu.name);
-    this.adminService.addCM(this.nameCM, this.caarc.name, this.trrans.name, this.maanu.name).subscribe((data:string)=>{
-      console.log(data);
-    });
+    //this.adminService.addCM(this.nameCM, this.caarc.name, this.trrans.name, this.maanu.name).subscribe((data:string)=>{
+    //  console.log(data);
+    //});
     this.show1 = false;
     this.show2 = false;
     this.show3 = false;

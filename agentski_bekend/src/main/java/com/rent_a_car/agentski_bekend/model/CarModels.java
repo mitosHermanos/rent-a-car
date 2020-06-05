@@ -80,4 +80,5 @@ public class CarModels {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
 }

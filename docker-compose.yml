@@ -1,211 +1,214 @@
 version: '3'
 services:
 
-  eureka:
-    build: ./eureka
-#    container name: eureka
-    ports:
-     - "8761:8761"
-    tty: true
 
-  zuul:
-    build: ./zuul
-#    container name: zuul
-    ports:
-    - "8083:8083"
-    environment:
-      - REGISTRY_HOST=eureka-serviceregistry
-    tty: true
-    depends_on:
-      - eureka
-      - ad-service
-      - admin-service
-      - authentication-service
-      - gps-service
-      - security-service
-      - renting-service
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx-server
-    ports:
-      - "80:80"
-      - "443:443"
-      - "444:444"
-      - "445:445"
-      - "446:446"
-      - "447:447"
-      - "448:448"
-    volumes:
-      - /consul-certs:/etc/nginx/certs
-      - ./nginx:/etc/nginx/nginx
-
-  admin-service:
-    image: admin_service
-    container_name: admin-service
-    build:
-      context: ./services/admin_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "8284:444"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-  ad-service:
-    image: ad_service
-    container_name: ad-service
-    build:
-      context: ./services/ad_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "8283:443"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-  renting-service:
-    image: renting_service
-    container_name: renting-service
-    build:
-      context: ./services/renting_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "8287:447"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-  authentication-service:
-    image: authentication_service
-    container_name: authentication-service
-    build:
-      context: ./services/authentication_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "8285:445"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-  gps-service:
-    image: gps_service
-    container_name: gps-service
-    build:
-      context: ./services/gps_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "127.0.0.1:8286:446"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-  security-service:
-    image: security_service
-    container_name: security-service
-    build:
-      context: ./services/security_service
-      dockerfile: Dockerfile
-    tty: true
-    environment:
-      - REGISTRY_HOST=eureka
-    ports:
-      - "127.0.0.1:8288:448"
-    networks:
-      - static-network
-    depends_on:
-      - eureka
-
-
-#  agentski-bekend:
-#     image: agentski_bekend
-#     build:
-#       context: ./agentski_bekend
-#       dockerfile: Dockerfile
-#     tty: true
-#     ports:
-#      - "127.0.0.1:8282:8282"
-#     networks:
-#       - static-network
-#     depends_on:
-#       - agentska-baza
-#     environment:
-#       DATABASE_USERMANE: root
-#       DATABASE_PASSWORD: admin
-#       DATABASE_DOMAIN: mysql
-#       DATABASE_PORT: "127.0.0.1:3306"
-
-
-
-#  agentski-frontend:
-#     image: agentski-frontend
-#     build:
-#       context: ./agentski-frontend
-#       dockerfile: Dockerfile
-#     tty: true
-#     ports:
-#      - "127.0.0.1:4200:80"
-#     networks:
-#       - static-network
-#     depends_on:
-#       - agentski-bekend
-
-#  agentska-baza:
-#    restart: always
-#    image: mysql
-#    build:
-#      context: ./agentska_baza
-#      dockerfile: Dockerfile
-#    environment:
-#      MYSQL_DATABASE: agentski_bekend
-#      MYSQL_ROOT_PASSWORD: admin
-#      MYSQL_USER: mysql
-#      MYSQL_PASSWORD: admin
-#    volumes:
-#      - ./sql:/docker-entrypoint-initdb.d
+#  eureka:
+#    build: ./eureka
+#    container_name: eureka
 #    ports:
-#      - "127.0.0.1:6033:3306"
-#    healthcheck:
-#      test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
-#      interval: 2s
-#      timeout: 20s
-#      retries: 10
+#     - "8761:8761"
+#    tty: true
 
-#  mysql:
-#    image: mysql:8.0.19
-#    container_name: mysql
-#    restart: always
+#  zuul:
+#    build: ./zuul
+#    container_name: zuul
+#    ports:
+#    - "8083:8083"
 #    environment:
-#      MYSQL_ROOT_PASSWORD: password
-#      MYSQL_USER: sa
-#      MYSQL_PASSWORD: zgadija
-#      MYSQL_DATABASE: servers
-#    volumes:
-#      - mysql-data:/var/lib/mysql
+#      - REGISTRY_HOST=eureka-serviceregistry
+#    tty: true
+#    depends_on:
+#      - eureka
+#      - ad-service
+#      - admin-service
+#      - authentication-service
+#      - gps-service
+#      - security-service
+#      - renting-service
 
+#  nginx:
+#    image: nginx:latest
+#    container_name: nginx-server
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "444:444"
+#      - "445:445"
+#      - "446:446"
+#      - "447:447"
+#      - "448:448"
+#    volumes:
+#      - /consul-certs:/etc/nginx/certs
+#      - ./nginx:/etc/nginx/nginx
+
+#  admin-service:
+#    image: admin_service
+#    container_name: admin-service
+#    build:
+#      context: ./services/admin_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    environment: 
+#      - REGISTRY_HOST=eureka
+#    ports:
+#      - "8284:444"
+#    networks:
+#      - first-network
+#    depends_on:
+#      - eureka
+
+#  ad-service:
+#    image: ad_service
+#    container_name: ad-service
+#    environment:
+#      - REGISTRY_HOST=eureka
+#    depends_on:
+#      - eureka
+#    build:
+#      context: ./services/ad_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    ports:
+#      - "8283:443"
+#    networks:
+#      - first-network
+
+#  renting-service:
+#    image: renting_service
+#    container_name: renting-service
+#    build: 
+#      context: ./services/renting_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eureka
+#    ports:
+#     - "8287:447"
+#    networks:
+#      - first-network
+#    depends_on:
+#      - eureka
+
+#  authentication-service:
+#    image: authentication_service
+#    container_name: authentication-service
+#    build:
+#      context: ./services/authentication_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eureka
+#    ports:
+#      - "8285:445"
+#    networks:
+#      - first-network
+#    depends_on:
+#      - eureka
+
+#  gps-service:
+#    image: gps_service
+#    container_name: gps-service
+#    build:
+#      context: ./services/gps_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eureka
+#    ports:
+#      - "127.0.0.1:8286:446"
+#    networks:
+#      - first-network
+#    depends_on:
+#      - eureka
+
+#  security-service:
+#    image: security_service
+#    container_name: security-service
+#    build:
+#      context: ./services/security_service
+#      dockerfile: Dockerfile
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eureka
+#    ports:
+#      - "127.0.0.1:8288:448"
+#    networks:
+#      - first-network
+#    depends_on:
+#      - eureka
+
+
+  agentski-bekend:
+     image: agentski_bekend
+     networks: 
+      - first-network
+     build:
+       context: ./agentski_bekend
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - 127.0.0.1:8282:8282
+     environment:
+       DATABASE_USERNAME: 'root'
+       DATABASE_PASSWORD: 'password'
+       DATABASE_DOMAIN: 'agentska-baza'
+       DATABASE_PORT: "3306"
+     depends_on:
+       - agentska-baza
+
+
+  agentski-frontend:
+     image: agentski-frontend
+     build:
+       context: ./agentski-frontend
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - "127.0.0.1:4200:80"
+     networks:
+       - first-network
+     depends_on:
+       - agentski-bekend
+
+
+  agentska-baza:
+    restart: always
+    networks: 
+     - first-network
+    container_name: agentska-baza
+    ports:
+     - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'agentska-baza'
+      MYSQL_USER: 'sa'
+      MYSQL_PASSWORD: 'admin'
+    image: mysql:8
+    volumes:
+      - my-datavolume:/var/lib/docker/agent
+
+  db:
+    restart: always
+    networks: 
+     - first-network
+    container_name: db
+    ports:
+     - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'main_db'
+      MYSQL_USER: 'sa'
+      MYSQL_PASSWORD: 'admin'
+    image: mysql:8
+    volumes:
+      - my-datavolume:/var/lib/docker/mainDb
 
 networks:
-  static-network:
+  first-network:
     ipam:
       config:
         - subnet: 172.20.0.0/16
+
+
+volumes:
+  my-datavolume:

@@ -1,7 +1,6 @@
 package com.rent_a_car.agentski_bekend.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name="cars_table")
@@ -13,23 +12,23 @@ public class Cars {
     @Column(name="cars_id", nullable=false, unique=true)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id",  referencedColumnName = "user_id")
     private User owner;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name="company_id",  referencedColumnName = "company_id")
     private Company company;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="car_models_id",  referencedColumnName = "car_models_id",  nullable=false)
     private CarModels model;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="fuel_type", referencedColumnName = "id",  nullable=false)
     private FuelType fuelType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="pricing_id", referencedColumnName = "pricing_id", nullable=false)
     private Pricing pricing;
 
@@ -53,7 +52,19 @@ public class Cars {
     @Column
     private boolean hasAndroid = false;
 
-    public Cars() {
+    @Column
+    private String town;
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public Cars(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -118,5 +129,17 @@ public class Cars {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    public Cars() {
+
     }
 }
