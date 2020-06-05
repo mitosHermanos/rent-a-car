@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
+import { RentRequestComponent } from './components/rent-request/rent-request.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'adminPage', component: AdminPageComponent},
     { path: 'advertisement', component: AdvertisementComponent},
-
+    { path: 'rentRequest', component: RentRequestComponent},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

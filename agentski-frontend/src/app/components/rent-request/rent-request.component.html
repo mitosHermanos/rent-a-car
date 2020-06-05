@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent Request</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="css/register.css"> -->
+    <!-- <script src="js/Register.js"></script> -->
+</head>
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="" id="icon" />
+        </div>
+        <div>
+            <select [(ngModel)]="car">
+                <option [ngValue]="car" *ngFor="let car of cars" (click)="selectedCar(car)">{{car.name}}</option>
+            </select>
+        </div>  
+    <input type="date" [matDatepicker]="startDate"   [(ngModel)]="selectedStartDate" > 
+    <mat-datepicker #startDate></mat-datepicker>
+    <input type="date" [matDatepicker]="endDate"   [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
+    <mat-datepicker #endDate></mat-datepicker>
+            <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Make a rent request</button>
+        <div id="formFooter">
+        </div>
+    </div>
+</div>
+</body>
+</html>

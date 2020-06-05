@@ -31,10 +31,17 @@
             <select [(ngModel)]="ft">
                 <option [ngValue]="ft" *ngFor="let ft of fuelType" (click)="selectedFuelType(ft)">{{ft.name}}</option>
             </select>
+        </div> 
+        <div>
+            <select [(ngModel)]="cm">
+                <option [ngValue]="cm" *ngFor="let cm of carModels" (click)="selectedCarModel(cm)">{{cm.name}}</option>
+            </select>
         </div>  
-        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name" [(ngModel)]="name">
+        <input type="text" id="name" class="fadeIn second" name="name" placeholder="nameAdvertisemnt" [(ngModel)]="nameAdvertisement">
         <p></p>
         <input type="number" id="milage" class="fadeIn second" name="milage" placeholder="milage" [(ngModel)]="milage">
+        <p></p>
+        <input type="text" id="namee" class="fadeIn second" name="name" placeholder="namePricing" [(ngModel)]="namePricing">
         <p></p>
         <input type="number" id="distancelimit" class="fadeIn second" name="distancelimit" placeholder="distancelimit" [(ngModel)]="distancelimit"><p></p>
         <input type="number" id="regularprice" class="fadeIn second" name="regularprice" placeholder="regularprice" [(ngModel)]="regularprice"><p></p>
@@ -42,10 +49,11 @@
         <input type="number" id="collisiondamage" class="fadeIn second" name="collisiondamage" placeholder="collisiondamage" [(ngModel)]="collisiondamage"><p></p>
         <input type="number" id="discountdays" class="fadeIn second" name="discountdays" placeholder="discountdays" [(ngModel)]="discountdays"><p></p>
         <input type="number" id="discountperc" class="fadeIn second" name="discountperc" placeholder="discountperc" [(ngModel)]="discountperc"><p></p>
-   <input type="date" [matDatepicker]="startDate"  [min]="minDate" [(ngModel)]="selectedStartDate" > 
-<mat-datepicker #startDate></mat-datepicker>
- <input type="date" [matDatepicker]="endDate"  [min]="minDate" [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
-<mat-datepicker #endDate></mat-datepicker>
+        <input type="date" [matDatepicker]="startDate" [(ngModel)]="selectedStartDate" (ngModelChange)="selectStartDate()"> 
+        <mat-datepicker #startDate></mat-datepicker>
+        <input type="date" [matDatepicker]="endDate" [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
+        
+        <mat-datepicker #endDate></mat-datepicker>
             <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Make an advertisement</button>
         <div id="formFooter">
         </div>

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CarModel } from 'src/app/models/CarModel';
+import { CarModels } from 'src/app/models/CarModels';
 import { FuelType } from 'src/app/models/FuelType';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { AdminService } from 'src/app/services/admin.service';
-import { Pricing } from 'src/app/models/Pricing';
 import { first } from 'rxjs/operators';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import * as moment from 'moment';
+import { Pricing } from 'src/app/models/Pricing';
+//import * as moment from 'moment';
 // import {ModalDismissReasons, NgbDatepickerConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 // import {faCalendar, faWindowClose, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 @Component({
@@ -15,10 +15,11 @@ import * as moment from 'moment';
   styleUrls: ['./advertisement.component.css']
 })
 export class AdvertisementComponent implements OnInit {
-  model: CarModel[];
+  model: CarModels[];
   fuelType: FuelType[];
   //fuelTyp: string;
-  name: string;
+  nameAdvertisement: string;
+  namePricing:string;
   milage: number;
   distancelimit: number;
   regularprice: number;
@@ -30,7 +31,10 @@ export class AdvertisementComponent implements OnInit {
   ft:FuelType;
   selectedStartDate:Date;
   selectedEndDate: Date;
-  minDate = moment(new Date()).format('YYYY-MM-DD');  //current
+  carModels:CarModels[];
+  cm:CarModels;
+
+  //minDate = moment(new Date()).format('YYYY-MM-DD');  //current
   constructor(
     private adminService: AdminService, 
     private advertisementService: AdvertisementService,
@@ -39,6 +43,10 @@ export class AdvertisementComponent implements OnInit {
   selectedFuelType(name:FuelType){
     this.ft = name;
     console.log(this.fuelType);
+  }
+  selectedCarModel(name:CarModels){
+    this.cm = name;
+    console.log(this.carModels);
   }
   selectStartDate() {
     console.log(this.selectedStartDate);
@@ -53,15 +61,31 @@ export class AdvertisementComponent implements OnInit {
     this.adminService.getFuelT().subscribe(data =>{
       this.fuelType = data;
     });
+    this.adminService.getCarModels().subscribe(data =>{
+      this.carModels = data;
+    });
   }
   onSubmit() {
-    this.pricing={distanceLimit: this.distancelimit, regularPrice: this.regularprice, overusePrice: this.overuseprice, collisionDamage: this.collisiondamage, discountDays: this.discountdays, discountPercent: this.discountperc, name: this.name, owner:null, company:null, deleted:false};
+    this.pricing={distanceLimit: this.distancelimit, regularPrice: this.regularprice, overusePrice: this.overuseprice, collisionDamage: this.collisiondamage, discountDays: this.discountdays, discountPercent: this.discountperc, name: this.namePricing, deleted:false};
     console.log(this.ft);
+    console.log(this.cm);
+
     console.log(this.pricing);
     this.advertisementService.addPricing(this.pricing).pipe(first())
     .subscribe(
         data => {
             console.log('Making advertisement successful');
+            this.makeAdvertisement();
         })
+
+  }
+
+  makeAdvertisement(){
+    this.advertisementService.addCar(this.namePricing, this.cm.name, this.ft.name, this.milage, this.nameAdvertisement, this.selectedStartDate, this.selectedEndDate).pipe(first())
+    .subscribe(
+        data => {
+            console.log('Making advertisement successful');
+        })
+
   }
 }

@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
+import { RentRequestComponent } from './components/rent-request/rent-request.component';
 //import { AuthGuard } from './helpers/auth.guard';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AdvertisementComponent } from './components/advertisement/advertisement
     AlertComponent, 
     HomeComponent,
     AdminPageComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    RentRequestComponent
    // AuthGuard
   ],
   imports: [

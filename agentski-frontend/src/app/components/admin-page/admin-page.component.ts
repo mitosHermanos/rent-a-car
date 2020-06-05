@@ -987,4 +987,9 @@ export class AdminPageComponent implements OnInit {
   toAdv(){
     this.router.navigateByUrl('advertisement');
   }
+
+  rentRequest(){
+    this.router.navigateByUrl('rentRequest');
+
+  }
 }
