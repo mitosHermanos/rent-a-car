@@ -13,6 +13,7 @@ import { AlertComponent } from './components/alert.component/alert.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 //import { AuthGuard } from './helpers/auth.guard';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     RegisterComponent,
     AlertComponent, 
     HomeComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AdvertisementComponent
    // AuthGuard
   ],
   imports: [

@@ -32,6 +32,10 @@
 
         <button id="button" (click)="newCarModel()">Add car model</button>
         <button id="button1" (click)="allCarModels()">All car models</button>
+        <button id="button2" (click)="activateAccounts()">Activate accounts</button>
+        <button id="button3" (click)="blockAccounts()">Block accounts</button>
+        <button id="button4" (click)="accBlocked()">All blocked acc</button>
+        <button id="button5" (click)="toAdv()">Make Advertisement</button>
         <ng-container *ngIf="show13">
           <div id="cModel">
               <p>Enter car model name: </p>
@@ -100,6 +104,62 @@
                 </tbody>
               </table>
         </ng-container>
+        <ng-container *ngIf="show16">
+          <table>
+              <thead>
+                <tr>           
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of usersAcc">           
+                  <td>{{ user.firsname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.email }}</td>
+                  <td><button (click)="activateAcc(user.email)">Activate</button></td>
+              </tr>
+              </tbody>
+            </table>
+      </ng-container>
+      <ng-container *ngIf="show17">
+        <table>
+            <thead>
+              <tr>           
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usersBloc">           
+                <td>{{ user.firsname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td><button (click)="blockAcc(user.email)">Block</button></td>
+            </tr>
+            </tbody>
+          </table>
+    </ng-container>
+    <ng-container *ngIf="show18">
+      <table>
+          <thead>
+            <tr>           
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usersBlocked">           
+              <td>{{ user.firsname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+          </tr>
+          </tbody>
+        </table>
+  </ng-container>
         <ng-container *ngIf="show5">
             <table>
                 <thead>
@@ -226,7 +286,7 @@
                   Activate<input type="checkbox" id="actCM" name="actCM" [(ngModel)]="actCM">
                   <p></p>
 
-                  
+
                   <button (click)="updateCM()">Submit</button>
               </div>
               </ng-container>

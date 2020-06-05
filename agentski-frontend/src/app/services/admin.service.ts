@@ -7,6 +7,7 @@ import {Manufacturer} from '../models/Manufacturer';
 import {TransmissionType} from '../models/TransmissionType';
 import {FuelType} from '../models/FuelType';
 import {CarModels} from '../models/CarModels';
+import { User } from '../models/User';
 
 
 const httpOptions = {
@@ -46,6 +47,12 @@ export class AdminService {
   url19:string = 'http://localhost:8282/admin/deleteCarModel';
   url20:string = 'http://localhost:8282/admin/updateCarModel';
 
+  url21:string = 'http://localhost:8282/admin/getUserRequests';
+  url22:string = 'http://localhost:8282/admin/getUsers';
+  url23:string = 'http://localhost:8282/admin/activateAcc';
+  url24:string = 'http://localhost:8282/admin/blockAcc';
+  url25:string = 'http://localhost:8282/admin/getBlockedUsers'
+
   carClass:CarClass;
   manufact:Manufacturer;
   transmission:TransmissionType;
@@ -54,6 +61,16 @@ export class AdminService {
 
 
   constructor(private http:HttpClient) { }
+
+  activate(email:string):Observable<string>{
+    return this.http.post<string>(this.url23, email, httpOptions);
+
+  }
+
+  block(email:string):Observable<string>{
+    return this.http.post<string>(this.url24, email, httpOptions);
+
+  }
 
   addCM(name:string, caarc:string, trrans:string, maanu:string):Observable<CarModels>{
     this.carModel={name:name, carClass:caarc, transmission:trrans, manufacturer:maanu, deleted:false};
@@ -116,6 +133,18 @@ export class AdminService {
 
   getFuelT():Observable<FuelType[]>{
     return this.http.get<FuelType[]>(this.url13);
+  }
+
+  getUserRequests():Observable<User[]>{
+    return this.http.get<User[]>(this.url21);
+  }
+
+  getUsers():Observable<User[]>{
+    return this.http.get<User[]>(this.url22);
+  }
+
+  getBlockedUsers():Observable<User[]>{
+    return this.http.get<User[]>(this.url25);
   }
 
   getTransmis():Observable<TransmissionType[]>{
