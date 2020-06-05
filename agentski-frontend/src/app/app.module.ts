@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import {FormsModule} from '@angular/forms';
+// import { MaterialModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 //import { JwtModule } from '@auth0/angular-jwt'
 //import { HttpModule } from '@angular/http'
 import { ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +46,10 @@ import { RentRequestComponent } from './components/rent-request/rent-request.com
     //     },
     //   }
     // }),
+    // MaterialModule,            // <----- this module will be deprecated in the future version.
+    // MatDatepickerModule,        // <----- import(must)
+    // MatNativeDateModule,        // <----- import for date formating(optional)
+    //MatMomentDateModule   
     
   ],
   providers: [],

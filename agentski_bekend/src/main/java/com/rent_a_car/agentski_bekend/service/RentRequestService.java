@@ -17,7 +17,7 @@ public class RentRequestService implements RentRequestServiceInterface {
     }
     @Override
     public RentRequest save(RentRequest user) {
-        return null;
+        return userRequestRepository.save(user);
     }
     @Override
     public List<RentRequest> findAll() {

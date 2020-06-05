@@ -49,11 +49,11 @@
         <input type="number" id="collisiondamage" class="fadeIn second" name="collisiondamage" placeholder="collisiondamage" [(ngModel)]="collisiondamage"><p></p>
         <input type="number" id="discountdays" class="fadeIn second" name="discountdays" placeholder="discountdays" [(ngModel)]="discountdays"><p></p>
         <input type="number" id="discountperc" class="fadeIn second" name="discountperc" placeholder="discountperc" [(ngModel)]="discountperc"><p></p>
-        <input type="date" [matDatepicker]="startDate" [(ngModel)]="selectedStartDate" (ngModelChange)="selectStartDate()"> 
-        <mat-datepicker #startDate></mat-datepicker>
-        <input type="date" [matDatepicker]="endDate" [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
+        <input type="date" [(ngModel)]="selectedStartDate" (ngModelChange)="selectStartDate()"> 
+        <!-- <mat-datepicker #startDate></mat-datepicker> -->
+        <input type="date" [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
         
-        <mat-datepicker #endDate></mat-datepicker>
+        <!-- <mat-datepicker #endDate></mat-datepicker> -->
             <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Make an advertisement</button>
         <div id="formFooter">
         </div>

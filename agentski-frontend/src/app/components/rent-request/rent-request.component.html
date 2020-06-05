@@ -21,10 +21,10 @@
                 <option [ngValue]="car" *ngFor="let car of cars" (click)="selectedCar(car)">{{car.name}}</option>
             </select>
         </div>  
-    <input type="date" [matDatepicker]="startDate"   [(ngModel)]="selectedStartDate" > 
-    <mat-datepicker #startDate></mat-datepicker>
-    <input type="date" [matDatepicker]="endDate"   [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
-    <mat-datepicker #endDate></mat-datepicker>
+    <input type="date" [(ngModel)]="selectedStartDate" > 
+    <!-- <mat-datepicker #startDate></mat-datepicker> -->
+    <input type="date" [(ngModel)]="selectedEndDate" (ngModelChange)="selectEndDate()">
+    <!-- <mat-datepicker #endDate></mat-datepicker> -->
             <button class="btn btn-primary fadeIn fourth" (click)="onSubmit()">Make a rent request</button>
         <div id="formFooter">
         </div>
