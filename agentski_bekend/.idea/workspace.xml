@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aa55eaa3-2341-4cfb-b370-13977940a89a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Agent/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agent/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentska_baza/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/browserslist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/e2e/protractor.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/e2e/src/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/e2e/src/app.po.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/e2e/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/admin-page/admin-page.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/admin-page/admin-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/admin-page/admin-page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/admin-page/admin-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../agentski-frontend/src/app/components/admin-page/admin-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/alert.component/alert.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/alert.component/alert.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/home/home.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/home/home.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/login/login.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/login/login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/login/login.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/register/register.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/register/register.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/register/register.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/components/register/register.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/helpers/error.interceptor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/helpers/jwt.interceptor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/CarClass.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/CarModels.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/FuelType.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/LoginUser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/Manufacturer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/TransmissionType.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/User.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/models/UserRequest.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/UserService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/admin.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/admin.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/alert.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/authentication.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/login.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/login.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/register.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/app/services/register.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/environments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/polyfills.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/src/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../agentski-frontend/tslint.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/consul-client.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrypoint.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/FastInfoset-1.2.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/HikariCP-3.4.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/accessors-smart-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/agentski_bekend.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/amqp-client-5.7.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/antlr-2.7.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/aopalliance-repackaged-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/asm-7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/asm-analysis-7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/asm-commons-7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/asm-tree-7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/asm-util-7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/aspectjweaver-1.9.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/byte-buddy-1.10.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/class-model-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/classmate-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/dom4j-2.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/evo-inflector-1.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/freemarker-2.3.30.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hibernate-commons-annotations-5.1.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hibernate-core-5.4.12.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hibernate-validator-6.0.18.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-api-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-core-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-locator-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-runlevel-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/hk2-utils-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/istack-commons-runtime-3.0.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-annotations-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-core-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-databind-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-datatype-jdk8-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-datatype-jsr310-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-module-jaxb-annotations-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jackson-module-parameter-names-2.10.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.activation-1.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.activation-api-1.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.annotation-api-1.3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.inject-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.jws-api-2.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.persistence-api-2.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.transaction-api-1.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.validation-api-2.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.ws.rs-api-2.1.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.xml.bind-api-2.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.xml.soap-api-1.4.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jakarta.xml.ws-api-2.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jandex-2.1.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/javassist-3.24.0-GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jaxb-runtime-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jboss-logging-3.4.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-bean-validation-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-client-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-common-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-container-servlet-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-container-servlet-core-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-entity-filtering-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-hk2-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-media-jaxb-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-media-json-jackson-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-server-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jersey-spring5-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/json-path-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/json-smart-2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/jul-to-slf4j-1.7.30.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/log4j-api-2.12.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/log4j-to-slf4j-2.12.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/logback-classic-1.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/logback-core-1.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/mimepull-1.9.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/osgi-resource-locator-1.0.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/saaj-impl-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/slf4j-api-1.7.30.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/snakeyaml-1.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-amqp-2.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-aop-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-aspects-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-beans-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-autoconfigure-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-amqp-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-aop-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-data-jpa-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-data-rest-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-freemarker-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-jdbc-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-jersey-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-json-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-logging-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-security-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-tomcat-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-validation-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-web-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-web-services-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-boot-starter-websocket-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-bridge-2.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-context-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-context-support-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-core-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-data-commons-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-data-jpa-2.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-data-rest-core-3.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-data-rest-webmvc-3.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-expression-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-hateoas-1.0.4.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-jcl-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-jdbc-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-messaging-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-orm-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-oxm-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-plugin-core-2.0.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-rabbit-2.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-retry-1.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-security-config-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-security-core-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-security-web-5.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-session-core-2.2.2.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-tx-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-web-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-webmvc-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-websocket-5.2.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-ws-core-3.0.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/spring-xml-3.0.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/stax-ex-1.8.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/tomcat-embed-core-9.0.33.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/tomcat-embed-el-9.0.33.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/tomcat-embed-websocket-9.0.33.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/agentski_bekend_jar/txw2-2.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/agentski_bekend/META-INF/agentski_bekend.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/agentski_bekend/META-INF/agentski_bekend.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/AgentskiBekendApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/controller/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/controller/RentingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/controller/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/CarClassDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/CarModelsDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/CarsDetailsDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/CarsListingDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/FuelTypeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/ManufacturerDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/TransmissionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/helper/TimeProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Advertisement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/CarClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/CarModels.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Cars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Cars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Company.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/FuelType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Manufacturer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Pricing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Privilege.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/RentRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/TransmissionType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/UserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/model/UserTokenState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/CarClassRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/CarModelsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/CarsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/CompanyRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/FuelTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/ManufacturerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/PricingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/TransmissionTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/repository/UserRequestRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/security/TokenUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/security/auth/JwtAuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/security/auth/RestAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/security/auth/TokenAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/security/auth/TokenBasedAuthentication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/CarClassService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/CarModelsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/CarsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/CompanyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/CustomUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/FuelTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/InitializeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/ManufacturerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/PricingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/TransmissionTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/UserRequestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/CarClassServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/CarModelsServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/CarsServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/CompanyServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/FuelTypeServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/ManufacturerServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/PricingServicecInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/TransmissionTypeServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/UserRequestServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rent_a_car/agentski_bekend/service/interfaces/UserServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/agentski-bekend.dc1.rent-a-car.keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bootstrap.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data-mysql.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rent-a-car.truststore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/rent_a_car/agentski_bekend/AgentskiBekendApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1crtJax957oTFh16H4AlyFsszbA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Agent/agentski_bekend" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean package" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="AgentskiBekendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rent_a_car.agentski_bekend.AgentskiBekendApplication" />
+      <module name="agentski_bekend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rent_a_car.agentski_bekend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AgentskiBekendApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aa55eaa3-2341-4cfb-b370-13977940a89a" name="Default Changelist" comment="" />
+      <created>1591298469641</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591298469641</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="805" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1591333203258">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="805" y="258" key="#com.intellij.ide.util.MemberChooser/65.24.1855.1056@65.24.1855.1056" timestamp="1591333203258" />
+    <state x="687" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1591322727680">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="687" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/65.24.1855.1056@65.24.1855.1056" timestamp="1591322727680" />
+    <state x="790" y="321" key="FileChooserDialogImpl" timestamp="1591421175134">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="790" y="321" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1591421175134" />
+    <state width="1809" height="214" key="GridCell.Tab.0.bottom" timestamp="1591421176764">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1809" height="214" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1591421176764" />
+    <state width="1809" height="214" key="GridCell.Tab.0.center" timestamp="1591421176764">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1809" height="214" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1591421176764" />
+    <state width="1809" height="214" key="GridCell.Tab.0.left" timestamp="1591421176763">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1809" height="214" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1591421176763" />
+    <state width="1809" height="214" key="GridCell.Tab.0.right" timestamp="1591421176764">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1809" height="214" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1591421176764" />
+    <state x="656" y="246" width="672" height="677" key="run.anything.popup" timestamp="1591418819625">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="656" y="246" width="672" height="677" key="run.anything.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1591418819625" />
+    <state x="656" y="271" width="672" height="754" key="run.anything.popup/65.24.1855.1176@65.24.1855.1176" timestamp="1591326095631" />
+  </component>
+</project>
