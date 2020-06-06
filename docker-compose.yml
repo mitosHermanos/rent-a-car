@@ -54,13 +54,17 @@ services:
       dockerfile: Dockerfile
     tty: true
     environment: 
-      - REGISTRY_HOST=eureka
+#      - REGISTRY_HOST=eureka
+       DATABASE_USERNAME: 'sa'
+       DATABASE_PASSWORD: 'admin	'
+       DATABASE_DOMAIN: 'db'
     ports:
       - "8284:444"
     networks:
       - first-network
     depends_on:
       - eureka
+      - db
 
   ad-service:
     image: ad_service

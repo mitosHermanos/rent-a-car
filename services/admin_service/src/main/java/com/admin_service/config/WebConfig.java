@@ -1,10 +1,9 @@
 package com.admin_service.config;
 
-import com.rent_a_car.agentski_bekend.security.TokenUtils;
-import com.rent_a_car.agentski_bekend.security.auth.RestAuthenticationEntryPoint;
-import com.rent_a_car.agentski_bekend.security.auth.TokenAuthenticationFilter;
-import com.rent_a_car.agentski_bekend.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.admin_service.security.TokenUtils;
+import com.admin_service.security.auth.RestAuthenticationEntryPoint;
+import com.admin_service.security.auth.TokenAuthenticationFilter;
+import com.admin_service.service.CustomUserDetailsService;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = false)
 public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Autowired

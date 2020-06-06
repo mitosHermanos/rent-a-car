@@ -1,7 +1,6 @@
-package com.rent_a_car.agentski_bekend.model;
+package com.admin_service.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity

@@ -7,7 +7,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+		"com.admin_service.service"})
 @RestController
 @EnableEurekaClient
 public class AdmnServiceApplication {

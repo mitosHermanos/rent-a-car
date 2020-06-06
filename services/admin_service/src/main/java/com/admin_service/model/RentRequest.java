@@ -1,9 +1,10 @@
-package com.rent_a_car.agentski_bekend.model;
+package com.admin_service.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+
 @Entity
 @Table(name = "rent_request_table")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

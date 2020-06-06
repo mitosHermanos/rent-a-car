@@ -1,4 +1,10 @@
 package com.admin_service.repository;
 
-public interface CarClassRepository {
+import com.admin_service.model.CarClass;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CarClassRepository extends JpaRepository<CarClass, Integer> {
+
+    CarClass findByName(String name);
+
 }

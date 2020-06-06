@@ -1,4 +1,4 @@
-package com.rent_a_car.agentski_bekend.dto;
+package com.admin_service.dto;
 
 public class ManufacturerDTO {
 
