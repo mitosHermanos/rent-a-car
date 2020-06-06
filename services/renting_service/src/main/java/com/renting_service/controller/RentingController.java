@@ -55,7 +55,6 @@ public class RentingController {
         CarsDetailsDTO retVal = new CarsDetailsDTO(carsService.getCar(id));
 
         return new ResponseEntity<CarsDetailsDTO>(retVal, HttpStatus.OK);
-
     }
 
 }

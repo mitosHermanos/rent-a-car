@@ -2,6 +2,18 @@ spring:
   application:
     # sets the name in Eureka
     name: ${springboot.app.name:eureka}
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${DATABASE_DOMAIN:localhost}:${DATABASE_PORT:3306}/${DATABASE_SCHEMA:db}?serverTimezone=UTC
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minIdle: 10
+      idle-timeout: 10000
+      maximumPoolSize: 30
 
 server:
   port: 8761
@@ -11,7 +23,7 @@ eureka:
     hostname: ${springboot.app.name:eureka}
     prefer-ip-address: true
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${registry.host:localhost}:${server.port}/eureka/

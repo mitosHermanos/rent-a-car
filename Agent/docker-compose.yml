@@ -1,0 +1,75 @@
+version: '3'
+services:
+
+
+
+  agentski-bekend:
+     image: agentski_bekend
+     networks: 
+      - second-network
+     build:
+       context: ./agentski_bekend
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - "127.30.0.0:8282:8282"
+     environment:
+       DATABASE_USERNAME: 'root'
+       DATABASE_PASSWORD: 'password'
+       DATABASE_DOMAIN: 'agentska-baza'
+       DATABASE_PORT: "3306"
+     depends_on:
+       - agentska-baza
+
+
+  agentski-frontend:
+     image: agentski-frontend
+     build:
+       context: ./agentski-frontend
+       dockerfile: Dockerfile
+     tty: true
+     ports:
+      - "127.30.0.0:4200:80"
+     networks:
+       - second-network
+     depends_on:
+       - agentski-bekend
+
+
+  agentska-baza:
+    restart: always
+    networks: 
+     - second-network
+    container_name: agentska-baza
+    ports:
+    - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'agentska-baza'
+      MYSQL_USER: 'sa'
+      MYSQL_PASSWORD: 'admin'
+    image: mysql:8
+    volumes:
+      - my-datavolume:/var/lib/docker/agent
+
+
+
+
+networks:
+  second-network:
+    ipam:
+      config:
+        - subnet: 127.30.0.0/16
+
+
+volumes:
+  my-datavolume:
+
+
+
+
+
+
+
+
+
