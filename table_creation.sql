@@ -1,23 +1,5 @@
-CREATE TABLE users (
-	id INTEGER, 
-    email VARCHAR(50) NOT NULL, 
-    password VARCHAR(50) NOT NULL, 
-    login_ban DATE,
-    rent_ban DATE, 
-    message_ban DATE, 
-    role VARCHAR(15),
-    deleted VARCHAR(6), 
-    
-    CONSTRAINT pk_user PRIMARY KEY (id), 
-    CONSTRAINT chk_userRole CHECK (role IN ('renter', 'admin')), 
-    CONSTRAINT uniq_email UNIQUE (email), 
-    CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
-);
-
 CREATE TABLE companies (
-	id INTEGER, 
-    email VARCHAR (50) NOT NULL, 
-    password VARCHAR (50) NOT NULL, 
+	id INTEGER,  
     name VARCHAR(50), 
     address VARCHAR(50), 
     buisness_number VARCHAR(15), 
@@ -26,6 +8,61 @@ CREATE TABLE companies (
     CONSTRAINT pk_company PRIMARY KEY (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
+
+
+CREATE TABLE users (
+	id INTEGER, 
+    email VARCHAR(50) NOT NULL, 
+    password VARCHAR(50) NOT NULL, 
+    login_ban DATE,
+    rent_ban DATE, 
+    message_ban DATE, 
+    deleted VARCHAR(6), 
+    company INTEGER, 
+    
+    CONSTRAINT pk_user PRIMARY KEY (id), 
+    CONSTRAINT chk_userRole CHECK (role IN ('renter', 'admin')), 
+    CONSTRAINT uniq_email UNIQUE (email), 
+    CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false')), 
+    CONSTRAINT fk_usersCompany FOREIGN KEY (company) REFERENCES companies(Id)
+);
+
+
+CREATE TABLE roles (
+	id INTEGER, 
+    role VARCHAR(50), 
+    
+    CONSTRAINT pk_roles PRIMARY KEY (id)
+);
+
+
+CREATE TABLE privileges (
+	id INTEGER, 
+	privilege VARCHAR(50), 
+    
+    CONSTRAINT pk_privileges PRIMARY KEY (id)
+);
+
+
+CREATE TABLE roles_privileges (
+	role INTEGER, 
+    privilege INTEGER, 
+    
+    CONSTRAINT pk_rolesPrivileges PRIMARY KEY (role, privilege), 
+    CONSTRAINT fk_rolesPrivilegesRole FOREIGN KEY (role) REFERENCES roles(id), 
+    CONSTRAINT fk_rolesPrivilegesPrivilege FOREIGN KEY (privilege) REFERENCES privileges (id)
+);
+
+
+CREATE TABLE users_roles (
+	user INTEGER, 
+    role INTEGER, 
+    
+    CONSTRAINT pk_usersRoles PRIMARY KEY (user, role), 
+    CONSTRAINT fk_usersRolesUsers FOREIGN KEY (user) REFERENCES users (id), 
+    CONSTRAINT fk_usersRolesRoles FOREIGN KEY (role) REFERENCES roles (id)
+);
+
 
 CREATE TABLE manufacturers (
 	id INTEGER, 
@@ -88,19 +125,16 @@ CREATE TABLE pricings (
     discount_percent DOUBLE, 
     deleted VARCHAR(6), 
 	name VARCHAR(50), 
-    owning_user INTEGER, 
-    owning_company INTEGER,
+    owner INTEGER, 
     
     CONSTRAINT pk_pricing PRIMARY KEY (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false')), 
-    CONSTRAINT fk_pricingOwner FOREIGN KEY (owning_user) REFERENCES users(id), 
-    CONSTRAINT fk_pricingCompany FOREIGN KEY (owning_company) REFERENCES companies(id)
+    CONSTRAINT fk_pricingOwner FOREIGN KEY (owner) REFERENCES users(id)
 );
 
 CREATE TABLE cars (
 	id INTEGER, 
     owner INTEGER, 
-    company INTEGER, 
     model INTEGER, 
     fuel_type INTEGER, 
     pricing INTEGER, 
@@ -109,8 +143,6 @@ CREATE TABLE cars (
     
     CONSTRAINT pk_car PRIMARY KEY (id),
     CONSTRAINT fk_carUser FOREIGN KEY (owner) REFERENCES users(id), 
-    CONSTRAINT fk_carCompany FOREIGN KEY (company) REFERENCES companies(id), 
-    CONSTRAINT chk_oneOwner CHECK ((company = null) OR (owner = null)),
     CONSTRAINT fk_carModel FOREIGN KEY (model) REFERENCES car_models(id), 
     CONSTRAINT fk_carFuelType FOREIGN KEY (fuel_type) REFERENCES fuel_types(id), 
     CONSTRAINT fk_carPricing FOREIGN KEY (pricing) REFERENCES pricings (id), 
@@ -121,17 +153,13 @@ CREATE TABLE messages (
 	id INTEGER, 
     content VARCHAR(150), 
     from_user INTEGER, 
-    from_company INTEGER, 
     to_user INTEGER, 
-    to_company INTEGER, 
     date TIMESTAMP, 
     deleted VARCHAR(6), 
     
     CONSTRAINT pk_messages PRIMARY KEY (id), 
     CONSTRAINT fk_messagesFromUser FOREIGN KEY (from_user) REFERENCES users (id), 
-    CONSTRAINT fk_messagesFromCompany FOREIGN KEY (from_company) REFERENCES companies (id), 
     CONSTRAINT fk_messagesToUser FOREIGN KEY (to_user) REFERENCES users (id), 
-    CONSTRAINT fk_messagesToCompany FOREIGN KEY (to_company) REFERENCES companies (id), 
     CONSTRAINT chk_deleted CHECK (deleted IN ('true', 'false'))
 );
 
@@ -198,14 +226,12 @@ CREATE TABLE gps_position (
 CREATE TABLE reciept (
 	id INTEGER, 
     customer INTEGER, 
-    owning_company INTEGER, 
     vehicle_owner INTEGER, 
     total_sum DOUBLE, 
     paid DATE, 			-- If null, presume not paid
     
     CONSTRAINT pk_reciept PRIMARY KEY (id), 
-    CONSTRAINT fk_recieptCustomer FOREIGN KEY (customer) REFERENCES users(id),
-    CONSTRAINT fk_recieptCompany FOREIGN KEY (owning_company) REFERENCES companies(id),   
+    CONSTRAINT fk_recieptCustomer FOREIGN KEY (customer) REFERENCES users(id),  
     CONSTRAINT fk_recieptOwner FOREIGN KEY (vehicle_owner) REFERENCES users (id)
 );
 
