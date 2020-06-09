@@ -60,8 +60,7 @@ public class AdvertisementController {
             c.setFuelType(ft);
             c.setMilage(dto.getMilage());
             c.setName(dto.getName());
-            c.setStartDate(dto.getStartDate());
-            c.setEndDate(dto.getEndDate());
+
             c.setAndroidGps(null);
             c.setOwner(null);
 
@@ -85,8 +84,6 @@ public class AdvertisementController {
             d.setFuelType(a.getFuelType().getName());
             d.setMilage(a.getMilage());
             d.setPricing(a.getPricing().getName());
-            d.setStartDate(a.getStartDate());
-            d.setEndDate(a.getEndDate());
 
             dto.add(d);
         }

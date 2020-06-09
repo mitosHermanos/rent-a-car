@@ -43,12 +43,6 @@ public class Cars {
     @OneToOne(fetch=FetchType.LAZY)
     private AndroidGPS androidGps;
 
-    @Column(name="start_date")
-    private Date startDate;
-
-    @Column(name="end_date")
-    private Date endDate;
-
     @Column(name="town")
     private String town;
 
@@ -74,22 +68,6 @@ public class Cars {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public Integer getId() {
