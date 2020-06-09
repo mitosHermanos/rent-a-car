@@ -81,7 +81,7 @@ services:
       - "8283:443"
     networks:
       - first-network
-
+ 
   renting-service:
     image: renting_service
     container_name: renting-service

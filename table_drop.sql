@@ -14,6 +14,10 @@ DROP TABLE car_models;
 DROP TABLE transmission_type;
 DROP TABLE car_class;
 DROP TABLE manufacturers;
-DROP TABLE companies;
+DROP TABLE users_roles;
+DROP TABLE roles_privileges;
+DROP TABLE privileges;
+DROP TABLE roles;
 DROP TABLE users;
+DROP TABLE companies;
 
